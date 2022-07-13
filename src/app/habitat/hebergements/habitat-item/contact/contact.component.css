@@ -1,0 +1,43 @@
+.contact {
+    display: flex;
+    justify-content: center;
+}
+.info {
+    margin-right: 7px;
+    display: flex;
+    border-radius: 2px;
+    background-color: var(--main-one);
+}
+.info .contenu {
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+}
+.info .contenu img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+.info .contenu p {
+    font-size: 17px;
+    color:  var(--second-two);
+}
+.info span {
+    width: 3px;
+    height: 100%;
+    background-color: var(--second-two);
+    transform: rotate(15deg);
+}
+@media(max-width: 767px){
+    .contact {
+        flex-direction: column;
+    }
+    .info {
+        margin-bottom: 10px;
+        width: 100%;
+        justify-content: space-evenly;
+    }
+    .btn {
+        width: 100%;
+    }
+}

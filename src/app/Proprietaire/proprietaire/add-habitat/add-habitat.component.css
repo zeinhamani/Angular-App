@@ -1,0 +1,111 @@
+.box {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    padding: 10px;
+    background: linear-gradient(135deg, var(--main-one), #284C96);
+}
+.form {
+    background: var(--second-two);
+    max-width: 800px;
+    width: 100%;
+    padding: 20px 30px;
+    border-radius: 5px 5px 0 0;
+
+}
+.form .title {
+    font-size: 25px;
+    margin-bottom: 20px;
+    color: #2b2a2a;
+ 
+}
+
+.form form {
+        display: grid;
+        grid-template-columns: auto auto auto ;
+        row-gap: 30px;
+        column-gap: 10px;   
+ }
+
+.form .group {
+    display: grid;
+    margin-bottom: 5px;
+}
+.form .group label {
+    font-size: 17px;
+    margin-bottom: 5px;
+}
+.form .group input {
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    border-bottom-width: 2px;
+    padding-left: 10px;
+    font-size: 15px;
+    transition: var(--main-transition);
+}
+.form .group input:focus {
+    border-color: var(--main-one);
+}
+.form .cat {
+    grid-column: 1/ 3;
+}
+.form .pres {
+    grid-column: 1/ 3;
+}
+.form .groupName {
+    grid-column: 1/ 3;
+}
+.add {
+    color: var(--main-color);
+    border: none;
+    padding: 5px;
+    border-radius: 1px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: var(--main-transition);
+}
+.add:hover {
+    color: var(--main-one);
+}
+.label-serv {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.remov {
+    background-color: var(--main-two);
+    color: var(--second-two);
+    border: none;
+    padding: 4px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: var(--main-transition);
+}
+.form .btn {
+    grid-column: 1/ 3;
+    color: #000;
+    border: none;
+    background: linear-gradient(135deg, var(--main-one), #284C96);;
+}
+.form .btn::before{
+    background: var(--main-two);
+}
+.form .btn:hover {
+    color: var(--second-one);
+} 
+@media(max-width: 999px) {
+    .form form {
+        display: grid;
+        grid-template-columns: auto auto ;
+    }
+}
+@media(max-width: 800px) {
+    .form form {
+        display: grid;
+        grid-template-columns: auto  ;
+      
+    }
+}

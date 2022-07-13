@@ -1,0 +1,93 @@
+import { DashboardComponent } from './../../dashboard.component';
+import { HabitatsService } from 'src/app/services/habitats.service';
+import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, Validators , FormBuilder, FormArray} from '@angular/forms';
+import { CategoriesService } from 'src/app/services/categories.service';
+import { Categorie } from 'src/app/models/categorie.model.ts';
+import { Equipement } from 'src/app/models/equipement.model.ts';
+import { EquipementsService } from 'src/app/services/equipements.service';
+
+@Component({
+  selector: 'app-add-habitat',
+  templateUrl: './add-habitat.component.html',
+  styleUrls: ['./add-habitat.component.css']
+})
+export class AddHabitatComponent implements OnInit {
+
+  categories!: Categorie[]  /*[{id:1 , nom: "yourte", habitats: [{id:2}], media: {id:0,fichier:''}} ]*/
+  equipements!: Equipement[] /*= [{id: 1,nom:'Television'},{id: 2,nom:'Litterie'} ]*/
+  addForm!: FormGroup ;
+  user = `api/users/${this.admin.currentUser.id}`
+  constructor(private formBuilder: FormBuilder, 
+              private habitatService: HabitatsService,
+              private admin: DashboardComponent,
+              private catService: CategoriesService ,
+              private equipService: EquipementsService,
+              private router: Router) { }
+  ngOnInit(): void {
+    this.getCategories()
+    this.getEquipements()
+    this.initForm()
+  }
+  initForm(){
+    this.addForm = this.formBuilder.group({
+      titre: ['', Validators.required],
+      presentation: ['', Validators.required],
+      adresse: ['', Validators.required],
+      prix: ['', Validators.required],
+      superficie: ['', Validators.required],
+      capaciteAccueil: ['', Validators.required],
+      dateOuvertureDu: ['', Validators.required],
+      dateOuvertureAu: ['', Validators.required],
+      fermetureExp: ['', Validators.required],
+      heureArriveeDu: ['', Validators.required],
+      heureArriveeAu: ['', Validators.required],
+      heureDepartDu: ['', Validators.required],
+      heureDepartAu: ['', Validators.required],
+      categorie: this.formBuilder.array([]),
+      equipements: ["", Validators.required],
+      user: [this.user, Validators.required],
+      destination: this.formBuilder.group({
+        ville: ['', Validators.required],
+        departement: ['', Validators.required],
+        pays: ['', Validators.required]
+      }),
+      services: this.formBuilder.array([]),    
+    })
+  }
+    get services() {
+      return this.addForm.get('services') as FormArray
+    }
+    addService(){
+      const  serviceForm = this.formBuilder.group({
+        nom: ["", Validators.required],
+        description: ["", Validators.required]
+      })
+       this.services.push(serviceForm)
+    } 
+    removeService(index: number){
+      this.services.removeAt(index)
+    }
+
+    getCategories(){
+      this.catService.getCatList().subscribe(
+        (response) => this.categories = response["hydra:member"]
+      )
+    }
+    getEquipements(){
+      this.equipService.getEquipList().subscribe(
+        (response) => this.equipements = response["hydra:member"]
+      )
+    }
+   creerHabitat(){
+    console.log(this.addForm.value)
+     this.habitatService.addHabitat(this.addForm.value).subscribe(
+      () => {
+        this.router.navigate(['habitats'])
+      }
+     )
+
+   } 
+
+}

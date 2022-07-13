@@ -1,0 +1,9 @@
+<div class="services">
+    <div class="service" *ngFor="let service of services | mapToIterable" >
+        <img src="" alt="" >
+        <div class="text">
+            <span class="nom LatoB">{{service.value.nom}}</span>
+            <p class="LatoR">{{service.value.description}}</p>
+        </div>
+    </div>
+</div>

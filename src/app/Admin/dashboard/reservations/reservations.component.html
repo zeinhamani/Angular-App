@@ -1,0 +1,28 @@
+<div class="en-tete">
+    <div class="titre RobotoB">
+        <h2>Listes des Réservations</h2>
+        <button class="add LatoB" (click)="addHabitat()">
+            <fa-icon class="edit" [icon]="addIcon"></fa-icon>
+            Ajouter une reservation
+        </button>
+    </div>
+    <div class="items LatoB">
+         <span>Id</span>
+         <span>Habitat</span>
+         <span>Locataire</span>
+         <span>Statut</span>
+    </div>
+</div>   
+<div class="habitat LatoB" *ngFor="let reservation of reservations">
+        <span>{{reservation.id}}</span>
+        <div class="habit">
+            <img src="" alt="" >
+            <span>{{reservation.habitat.titre}}</span>
+        </div>
+        <div class="user">
+            <img src="" alt="">
+            <span>{{reservation.user.nom}}</span>
+        </div>
+        <span class="annuler" *ngIf="reservation.Annulee" >Annulée</span>
+        <span class="conserver" *ngIf="!reservation.Annulee">Conservée</span>
+</div>

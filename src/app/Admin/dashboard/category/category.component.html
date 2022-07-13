@@ -1,0 +1,31 @@
+<div class="en-tete">
+    <div class="titre RobotoB">
+        <h2>Listes des Catégories</h2>
+        <button class="add LatoB" (click)="addHabitat()">
+            <fa-icon class="edit" [icon]="addIcon"></fa-icon>
+            Ajouter un categorie
+        </button>
+    </div>
+    <div class="items LatoB">
+         <span>Photo</span>
+         <span>Id</span>
+         <span>Nom</span>
+    </div>
+</div>   
+<div class="habitat LatoB" *ngFor="let category of categories">
+        <div class="nom">
+            <img src="" >
+        </div>
+        <span >{{category.id}}</span>
+        <span >{{category.nom}}</span>
+        <div class="icon">
+            <a>
+                <fa-icon class="edit" [icon]="edit"></fa-icon>
+            </a>
+            <a>
+                <fa-icon  class="delete" [icon]="delete"></fa-icon>
+            </a>
+
+        </div>
+        
+</div>

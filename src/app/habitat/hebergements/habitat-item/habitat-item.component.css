@@ -1,0 +1,250 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(8,auto);
+    grid-template-rows: auto auto auto auto auto auto  ;
+    grid-row-gap: 20px;
+}
+
+/* details de l'habitat Nom, photos , prix et  capacité d'Accueille */
+.details {
+    grid-column: 1 / 9;
+    grid-row: 1 / 2;
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    grid-template-rows: auto auto;
+    grid-gap: 10px;
+}
+.details h2 {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+.details .capacite {
+    grid-column: 4 / 5 ;
+    grid-row: 1 / 2;
+    display: flex;
+    justify-content: center;
+    padding: 10px 5px;
+}
+.details .capacite p {
+    color: var(--main-two);
+    margin-right: 20px;
+}
+.details .capacite fa-icon {
+    font-size: 20px;
+    color: var(--main-two);
+}
+.details .prix {
+    grid-column: 5 / 6;
+    grid-row: 1 / 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 5px;
+    background: var(--main-two);
+    color: var(--second-two);
+    font-weight: 600;
+}
+.details .img-slider {
+    grid-column: 1 / 6;
+    grid-row: 2 / 3;
+    height: 500px;
+    position: relative;
+}
+.details .img-slider img {
+    width: 100%;
+    height: 100%;
+    transition: 0.7s;
+    z-index: -1;
+}
+.details .img-slider button {
+  
+   width: 40px;
+   height: 40px;
+   border-radius: 50%;
+   background: var(--second-one);
+   border: 1px solid #504141;
+}
+.details .img-slider .left {
+    position: absolute;
+    top: 50%;
+    left: 2%;
+    transform: rotate(180deg);
+}
+.details .img-slider .right {
+    position: absolute;
+    top: 50%;
+    right:2%;
+}
+.details .img-slider button img {
+    width: 30px;
+    height: 30px;
+}
+.details .img-slider .radios {
+    display: flex;
+    position: absolute;
+    left: 45%;
+    bottom: 5%;
+}
+.details .img-slider .radio {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--main-two);
+}
+/* Reservation de l'habitat */
+app-add-reservation {
+    grid-column: 1 /  5;
+    grid-row: 2 / 3;
+}
+/* Contacter  le propriétaire de l'habitat */
+app-contact {
+    grid-column: 6 /  9;
+    grid-row: 2 / 3;
+}
+
+/* Presentation de l'habitat */
+.pres {
+    grid-column: 3 /  7;
+    grid-row: 3 / 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.pres h2 {
+    margin-bottom: 20px;
+}
+.pres span {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/* Caractéristiques de l'habitat */
+.caract {
+    grid-column: 1 / 6;
+    grid-row: 4 / 5;
+    display: flex;
+    flex-direction: column;
+}
+.caract h2 {
+    margin-bottom: 30px;
+}
+.caract .elements {
+   display: flex;
+   justify-content: space-between;
+   flex-wrap: wrap;
+}
+.elements .group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.group img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+.group span {
+    font-size: 13px;
+    color: var(--main-two);
+    margin-bottom: 15px;
+    font-weight: 900;
+}
+.group p {
+  font-size: 10px;
+  font-weight: 500;
+}
+/* Equipements de l'habitat */
+.equi {
+    grid-column: 1 /  5;
+    grid-row: 5 / 6;
+    display: grid;
+}
+/* Services de l'habitat */
+.serv {
+    grid-column: 7 / 9;
+    grid-row: 5 / 6;
+    display: grid;
+}
+.serv h2 {
+    margin-bottom: 20px
+}
+/* Avis clients */
+.avis {
+    grid-column: 3 / 6;
+    grid-row: 6 / 7;
+}
+.avis h2 {
+    margin-bottom: 20px;
+}
+@media(max-width: 990px){
+    .container {
+      display: grid;
+      grid-template-columns: auto;
+      grid-template-rows: auto auto auto auto auto auto auto auto ;
+      grid-row-gap:  20px ; 
+      padding: 0 10px;
+    }
+    .details {
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+      grid-template-rows: repeat(3, auto);
+      grid-row-gap: 10px;
+    }
+    .details h2 {
+      grid-column: 1 / 2 ;
+      grid-row: 1 / 2;
+    }
+    .details .prix {
+      grid-column: 3 / 4 ;
+      grid-row: 1 / 2;
+      font-weight: 400;
+    }
+    .details .img-slider {
+      grid-column: 1 / 4;
+      grid-row: 2 / 3 ;
+    }
+    .details .capacite {
+      grid-column: 1 / 2 ;
+      grid-row: 3 / 4 ;
+    }
+    /* Contact */
+    
+    app-contact {
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+    }
+    /* Reservation */
+    app-add-reservation {
+      grid-column: 1 / 2;
+      grid-row: 3 / 4;
+    }
+    /* Presentation */
+    .pres {
+      grid-column: 1 / 2;
+      grid-row: 4 /5;
+    }
+    /* Caractéristisues */
+    .caract {
+        grid-column: 1 / 2;
+        grid-row: 5 / 6;
+    }
+    /* équipements */
+    .equi {
+      grid-column: 1 / 2;
+      grid-row: 6 / 7;
+    }
+    /* Services */
+    .serv {
+      grid-column: 1 / 2;
+      grid-row: 7 / 8;
+    }
+    /* Avis clients */
+    .avis {
+        grid-column: 1 / 2;
+        grid-row: 8 / 9;
+    }
+}

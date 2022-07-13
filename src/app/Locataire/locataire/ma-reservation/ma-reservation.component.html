@@ -1,0 +1,40 @@
+<div class="box">
+    <div class="reservation">
+        <div class="img">
+            <img src="" >
+            <div class="annuler LatoB" *ngIf="reservation.Annulee"> cette reservation est annulée </div>
+        </div>
+        <div class="dateR LatoR">
+                  le {{reservation.DateReservation}}
+        </div>
+        <div class="montant">
+            <span class="LatoB">{{reservation.MontantTotal}}€</span>
+            <p class="personnes LatoR">{{reservation.NombrePersonnes}} personnes</p>
+        </div>
+        <div class="dates">
+            <div class="heure">
+                <fa-icon [icon]="arrivee"></fa-icon>
+                <div class="text">
+                    <span class="LatoB">Arrivée</span>
+                    <p class="LatoR">{{reservation.DateArrivee}}</p>
+                </div>
+            </div>
+            <div class="heure">
+              <fa-icon [icon]="depart"></fa-icon>
+              <div class="text">
+                  <span class="LatoB">Depart</span>
+                  <p class="LatoR">{{reservation.DateDepart}}</p>
+              </div>
+            </div>
+        </div>
+        <div class="habitat">
+           <a  class="nom LatoB" (click)="voirHabitat(reservation.habitat.id)">{{reservation.habitat.titre}}</a>
+           <a (click)="commenter()" class="commenter LatoB">Commenter</a>
+        </div>
+  </div>
+</div> 
+<router-outlet></router-outlet>
+
+
+
+

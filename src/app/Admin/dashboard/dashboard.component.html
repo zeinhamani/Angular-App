@@ -1,0 +1,89 @@
+<div class="container">
+    <div class="head">
+        <button type="button" class="menu-toggle" (click)="menuToggle()" [class.active]="toggler" >
+            <span></span>
+        </button>
+        <div class="logo">
+            <a href=""  ><img src="assets/AttypikLogoH.png" alt="" width="100"> </a>
+        </div>
+    </div>
+    <div class="side-bar" [class.show]="toggler"> 
+        <ul class="menu LatoB">
+            <li>
+                <a routerLink='habitats'>
+                    <fa-icon [icon]="habitat"></fa-icon>
+                    <span>Habitats</span>
+                </a>
+            </li>
+            <li>
+                <a routerLink='users'>
+                    <fa-icon [icon]="users"></fa-icon>
+                    <span>Utilisateurs</span>
+                </a>
+            </li>
+            <li>
+                <a routerLink='categories'>
+                    <fa-icon [icon]="category"></fa-icon>
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a routerLink='destinations' >
+                    <fa-icon [icon]="destination"></fa-icon>
+                    <span>Destinations</span>
+                </a>
+            </li>
+            <li>
+                <a routerLink='reservations'>
+                    <fa-icon [icon]="reservation"></fa-icon>
+                    <span>Reservations</span>
+                </a>
+            </li>
+            <li>
+                <a routerLink='commentaires'>
+                    <fa-icon [icon]="comments"></fa-icon>
+                    <span>Commentaires</span>
+                </a>
+            </li>
+            <li>
+                <a routerLink='equipements'>
+                    <fa-icon [icon]="equipement"></fa-icon>
+                    <span>Equipements</span>
+                </a>
+            </li>
+            <li>
+                <a routerLink='services'>
+                    <fa-icon [icon]="service"></fa-icon>
+                    <span>Services</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <fa-icon [icon]="media"></fa-icon>
+                    <span>Medias</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <fa-icon [icon]="message"></fa-icon>
+                    <span>Contact</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <fa-icon [icon]="box"></fa-icon>
+                    <span>Boite Mail</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <fa-icon [icon]="logOut"></fa-icon>
+                    <span>Déconnexion</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="outlet">
+        <router-outlet></router-outlet>
+    </div>
+</div>

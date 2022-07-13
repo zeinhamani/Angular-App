@@ -1,0 +1,24 @@
+<div class="en-tete">
+    <div class="titre RobotoB">
+        <h2>Listes des Utilisateus</h2>
+        <button class="add LatoB" (click)="addHabitat()">
+            <fa-icon class="edit" [icon]="addIcon"></fa-icon>
+            Ajouter un utilisateur
+        </button>
+    </div>
+    <div class="items LatoB">
+         <span>Nom</span>
+         <span>Id</span>
+         <span>email</span>
+         <span>roles</span>
+    </div>
+</div>   
+<div class="habitat LatoB" *ngFor="let user of users">
+        <div class="nom">
+            <img src="" alt="" >
+            <span>{{user.nom}}</span>
+        </div>
+        <span >{{user.id}}</span>
+        <span >{{user.email}}</span>
+        <span  >{{user.roles[0]}}</span>
+</div>

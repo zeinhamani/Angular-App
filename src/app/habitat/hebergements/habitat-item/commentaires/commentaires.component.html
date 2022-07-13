@@ -1,0 +1,15 @@
+<div class="commentaires">
+    <div class="commentaire LatoR" *ngFor="let commentaire of commentaires">
+          <img src="" alt="" >
+          <span>{{commentaire.reservation.user.username}}</span>
+          <div class="stars" >
+            <fa-icon [icon]="faStar"></fa-icon>
+            <fa-icon [icon]="faStar"></fa-icon>
+            <fa-icon [icon]="faStar"></fa-icon>
+            <fa-icon [icon]="faStar"></fa-icon>
+            <fa-icon [icon]="faStar"></fa-icon>
+          </div>
+          <p class="date"> Le {{commentaire.DateCommentaire}}</p>
+          <p class="contenu">{{commentaire.Contenu}}</p>
+    </div>
+</div>

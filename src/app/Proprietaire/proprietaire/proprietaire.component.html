@@ -1,0 +1,44 @@
+<div class="container">  
+    <div class="sidebar">
+           <div class="img">
+               <img src="" alt="" srcset="">
+           </div>
+           <h2 class="RobotoR">{{currentUser.nom}}</h2>
+           <ul class="menu LatoB" >
+                   <li>
+                       <a routerLink='mes-habitats'>
+                           <fa-icon [icon]="habitIcon"></fa-icon>
+                           <span>Mes habitats</span>
+                       </a>
+                   </li>
+                   <li>
+                   <a routerLink=''>
+                        <fa-icon [icon]="resrvIcon"></fa-icon>
+                        <span>Reservations</span>
+                   </a>
+                   </li>
+                   <li>
+                    <a routerLink=''>
+                         <fa-icon [icon]="NotIcon"></fa-icon>
+                         <span>Notifications</span>
+                    </a>
+                    </li>
+
+                   <li>
+                       <a routerLink='habitats'>
+                           <fa-icon [icon]="settIcon"></fa-icon>
+                           <span>Settings</span>
+                       </a>
+                   </li>
+                   <li>
+                       <a routerLink='habitats'>
+                           <fa-icon [icon]="logOut"></fa-icon>
+                           <span>Deconnecter</span>
+                       </a>
+                   </li>
+               </ul>
+    </div>
+    <div class="outlet">
+        <router-outlet></router-outlet>
+   </div>
+</div>

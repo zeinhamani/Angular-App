@@ -1,0 +1,35 @@
+.reservation form {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: auto;
+    grid-column-gap: 5px;
+}
+form .group {
+    width: 100%;
+}
+form .group input {
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    border-bottom-width: 2px;
+    padding-left: 10px;
+    font-size: 10px;
+    transition: var(--main-transition);
+}
+.btn {
+
+    text-align: center;
+    text-transform: uppercase;
+    
+}
+@media(max-width: 767px){
+    .reservation form {
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows:  repeat(4, auto);
+        grid-row-gap: 5px;
+    }
+
+}

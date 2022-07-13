@@ -1,0 +1,89 @@
+<div class="container">
+    {{signupForm.value | json}}
+    <div class="form">
+        <title  class="title RobotoB"> Crée votre compte locataire</title>
+    
+        </div>
+        <form [formGroup]="signupForm" (ngSubmit)="saveLocData()" class="LatoR">
+            <div class="group">
+                <label for="nom" >Votre nom</label>
+                <input type="text" 
+                       id="nom" 
+                       placeholder="Robert" 
+                       formControlName="nom"
+                       [class.invalid]="nom!.invalid && nom!.touched">
+                <div class="invalid" [class.dNone]="nom!.valid || nom!.untouched ">
+                    <span *ngIf="nom!.hasError('required')">
+                            Votre  nom est obligatoire
+                    </span>
+                    <span *ngIf="nom!.hasError('minLength')">
+                           Le nom doit contenir au moins 3 charachtères
+                    </span>
+                </div>
+            </div>
+            <div class="group">
+                <label for="email" >Votre adress mail</label>
+                <input 
+                type="text" 
+                id="email" 
+                placeholder="JeanRobert@yahoo.fr" 
+                formControlName="email"
+                [class.invalid]="email!.invalid && email!.touched">
+                <div class="invalid" [class.dNone]="email!.valid || email!.untouched ">
+                    <span *ngIf="email!.hasError('required')">
+                      Votre adresse email est obligatoire
+                    </span>
+                    <span *ngIf="email!.hasError('email')">
+                      Le Format de l'adresse fournie n'est pas valide
+                    </span>
+                </div>
+
+            </div>
+            <div class="group">
+                <label for="password" >Votre mot de passe</label>
+                <input type="text" 
+                       id="password" 
+                       placeholder=""
+                       [pattern]="passwordPtn" 
+                       formControlName="password"
+                       [class.invalid]="password!.invalid && password!.touched">
+                <div class="invalid" [class.dNone]="password!.valid || password!.untouched ">
+                        <span *ngIf="password!.hasError('required')">
+                                Votre  nom est obligatoire
+                        </span>
+                        <span *ngIf="password!.hasError('pattern')">
+                            le mot de pass doit contenir au moins 1 charachtère alphabétique 
+                            1 majuscule , 1 muniscule et  1 nombre
+                        </span>
+                </div>
+            </div>
+            <div class="group">
+                <label for="confirmPass" >Confirmer votre mot de passe</label>
+                <input type="text" 
+                       id="password" 
+                       placeholder="" 
+                       formControlName="confirmed_password"
+                       [class.invalid]="confirmedPassword!.invalid && confirmedPassword!.touched">
+                <div class="invalid" [class.dNone]="confirmedPassword!.valid || confirmedPassword!.untouched ">
+                        <span *ngIf="confirmedPassword!.hasError('required')">
+                                La confirmation de mot de pass est obligatoire
+                        </span>
+                        <span *ngIf="signupForm!.errors?.misMatch">
+                            les mots de pass ne sont pas le meme
+                         </span>
+                </div>       
+            </div>
+            <button class="btn" type="submit">Enregistrer</button>
+            <p class="conditions"> 
+                <input type="checkbox">
+                CONDITIONS GÉNÉRALES D’UTILISATION et DE VENTE
+                <a routerLink="auth/signin">Voir</a> 
+            </p>
+            <p> Vous avez déjà un compte ?  
+                <a routerLink="auth/signin">Se connecter</a> 
+            </p>
+        </form>
+       
+    </div>
+    
+</div>

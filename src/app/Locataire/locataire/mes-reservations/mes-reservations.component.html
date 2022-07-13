@@ -1,0 +1,26 @@
+ <div class="box">
+    
+    <title  class="titre RobotoB">Mes réservations</title>
+    <div class="reservation" *ngFor="let reservation of reservations">
+        <div class="habitat">
+            <img src=""  alt="">
+            <div class="info LatoB">
+                <h3>{{reservation.habitat.titre}}</h3>
+                <span class="LatoR ">effectué le {{reservation.DateReservation}}</span>
+            </div>
+        </div>
+        <div class="annuler LatoB" *ngIf="reservation.Annulee"> 
+            Cette réservation a été annulée
+        </div>
+        <div class="details"> 
+            <a href="#" class="LatoR" (click)="voirReservation(reservation.id)">voir les détails </a>
+        </div>
+        
+    </div>
+</div> 
+<!--<div class="box">
+    <h2>mes reservations</h2>
+    <span href="">{{reservations[0].MontantTotal}}</span>
+    <span href="">{{reservations[0].habitat.id}}</span>
+    <span href="">{{reservations[0].habitat.titre}}</span>
+</div>-->

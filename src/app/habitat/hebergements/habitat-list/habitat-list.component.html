@@ -1,0 +1,19 @@
+<div class="container" *ngIf="habitats">
+    <div class="habitat"  *ngFor="let habitat of habitats" (click)="voirHabitat(habitat.id)" >
+         <div class="type LatoB">
+             <h2>{{habitat.categorie.nom}}</h2>
+         </div>
+         <div class="img">
+             <img src="" >
+             <div class="prix LatoB">{{habitat.prix}}€ / nuit </div>
+         </div>
+         <div class="info ">
+             <span class="nom LatoB">
+                 {{habitat.titre}}
+             </span>
+             <div class="destination LatoL">
+                <p>{{habitat.destination.pays}}, {{habitat.destination.ville}}({{habitat.destination.departement}}) </p> 
+             </div>
+         </div>
+    </div> 
+</div>

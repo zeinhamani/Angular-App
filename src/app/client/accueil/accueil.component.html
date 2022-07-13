@@ -1,0 +1,8 @@
+<div class="container">
+    <form [formGroup]="signupForm" (ngSubmit)="rechercher()" class="LatoR">
+        <div class="group">
+            <input type="search" id="rechercher" placeholder="Rechercher" formControlName="mot_cle">
+        </div>
+        <button class="btn LatoR" type="submit" >Reserver</button>
+    </form>
+</div>

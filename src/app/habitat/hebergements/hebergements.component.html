@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="titre">
+        <h1 class="RobotoB">Nom habitats </h1>
+    </div>
+    <div class="categories">
+        <div class="categorie LatoR" *ngFor="let categorie of categories">
+            <div class="img">
+                <img src="" alt="">
+            </div>
+            <div class="nom">
+                <span class="nom">{{categorie.nom}}</span>
+            </div>
+            <div class="lien">
+                <a (click)="voir()">Voir les habitats</a>
+            </div>
+            
+        </div>
+    </div>
+    
+</div> 

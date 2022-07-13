@@ -1,0 +1,23 @@
+<div class="box">
+    <div class="form">
+        <title class="title RobotoB">  Renseigner les informations du  equipement</title>
+       
+        <form [formGroup]="addForm" (ngSubmit)="editEquipement()" class="LatoB">
+            <div class="group">
+                <label for="nom" >le nom du Equipement</label>
+                <input type="text"  id="nom" placeholder="" formControlName="nom">
+                <div class="invalid" [class.dNone]="nom!.valid || nom!.untouched ">
+                    <span *ngIf="nom!.hasError('required')">
+                            le nom  doit étre obligatoire
+                    </span>
+                    <span *ngIf="nom!.hasError('minLength')">
+                           Le nom doit contenir au moins 3 charachtères
+                    </span>
+                </div>
+            </div>
+
+            <button class="btn" type="submit">Enregistrer</button>
+        </form>
+
+    </div>
+</div>

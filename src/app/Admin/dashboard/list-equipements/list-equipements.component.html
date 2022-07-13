@@ -1,0 +1,31 @@
+<div class="en-tete">
+    <div class="titre RobotoB">
+        <h2>Listes des equipement</h2>
+        <button class="add LatoB" (click)="addHabitat()">
+            <fa-icon class="edit" [icon]="addIcon"></fa-icon>
+            Ajouter un equipement
+        </button>
+    </div>
+    <div class="items LatoB">
+         <span>Icon</span>
+         <span>Id</span>
+         <span>Nom</span>
+    </div>
+</div>   
+<div class="equipement LatoB" *ngFor="let equipement of equipements">
+         <div class="nom">
+             <img src="" >
+        </div>
+        <span >{{equipement.id}}</span>
+        <span >{{equipement.nom}}</span>
+        <div class="icon">
+            <a>
+                <fa-icon class="edit" [icon]="edit"></fa-icon>
+            </a>
+            <a>
+                <fa-icon  class="delete" [icon]="delete"></fa-icon>
+            </a>
+
+        </div>
+        
+</div> 

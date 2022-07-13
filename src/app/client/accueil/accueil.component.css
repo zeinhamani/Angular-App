@@ -1,0 +1,25 @@
+.container form {
+    display: flex;
+  
+}
+form .group {
+    width: 100%;
+    margin-right: 5px;
+}
+form .group input {
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    border-bottom-width: 2px;
+    padding-left: 10px;
+    font-size: 10px;
+    transition: var(--main-transition);
+}
+.btn {
+
+    text-align: center;
+    text-transform: uppercase;
+    
+}

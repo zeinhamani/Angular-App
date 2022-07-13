@@ -1,0 +1,32 @@
+<div class="en-tete">
+    <div class="titre RobotoB">
+        <h2>Listes des Destinations</h2>
+        <button class="add LatoB" (click)="addHabitat()">
+            <fa-icon class="edit" [icon]="addIcon"></fa-icon>
+            Ajouter une destination
+        </button>
+    </div>
+    <div class="items LatoB">
+         <span>Id</span>
+         <span>Ville</span>
+         <span>Departement</span>
+         <span>Pays</span>
+    </div>
+</div>   
+<div class="destination LatoB" *ngFor="let destination of destinations">
+        <span >{{destination.id}}</span>
+        <span >{{destination.ville}}</span>
+        <span >{{destination.departement}}</span>
+        <span >{{destination.pays}}</span>
+        <div class="icon">
+            <a>
+                <fa-icon class="edit" [icon]="edit"></fa-icon>
+            </a>
+            <a>
+                <fa-icon  class="delete" [icon]="delete"></fa-icon>
+            </a>
+
+        </div>
+        
+</div>
+

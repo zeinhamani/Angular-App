@@ -1,0 +1,40 @@
+.services {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.service {
+    display: flex;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.service img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+.service .text .nom {
+   font-size: 18px;
+   text-transform: uppercase;   
+}
+.service .text p {
+    font-size: 14px;
+}
+
+@media(max-width: 767px) {
+    .services {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .service {
+        flex-direction: column;
+        align-items: center;
+        
+    }
+    .service img {
+        margin-bottom: 15px;
+    }   
+}

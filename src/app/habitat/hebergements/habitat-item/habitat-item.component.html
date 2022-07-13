@@ -1,0 +1,95 @@
+
+ <div class="container" *ngIf="habitat">
+    <!-- Start détails --> 
+    <div class="details">
+        <h2 class="RobotoR">{{habitat.titre}}</h2>
+        <div class="capacite LatoL">
+            <p>{{habitat.capaciteAccueil}} personnes</p>
+            <fa-icon [icon]="faUsers"></fa-icon>
+        </div>
+        <div class="prix LatoR">à partir de {{habitat.prix}} euro</div>
+        <div class="img-slider" >
+            <img src="" alt="" >
+            <button class="left" (click)="defilerGauche()">
+                <img src="assets/icons/play.png" alt=""  >
+            </button>
+            <button class="right" (click)="defilerDroit()">
+                <img src="assets/icons/play.png" alt="" >
+            </button>
+            <div class="radios">
+                <div class="radio" ></div>
+            </div>
+                            
+        </div>
+    </div>
+    <!-- Start Réservation -->
+    <app-add-reservation></app-add-reservation>
+    <!-- Start Prop Contact --> 
+    <app-contact></app-contact>
+    <!-- Start Presentation -->
+    <div class="pres">
+        <h2 class="RobotoB">Présentaion de l'habitat</h2>
+        <span class="LatoB">{{adresse}}</span>
+        <p class="LatoR">{{habitat.presentation}}</p>
+    </div>
+    <!-- Start Caractéristiques -->
+    <div class="caract">
+        <h2 class="RobotoR">Caractéristiques</h2>
+        <div class="elements LatoR">
+            <div class="group">
+                <img src="assets/icons/opening.png" alt="" >
+                <span class="">Date d'ouverture</span>
+                <p>Du {{dateOuvertureDu}} au {{dateOuvertureAu}}</p>
+            </div>
+            <div class="group">
+                <img src="assets/icons/cancel.png" alt="" >
+                <span>Fermeture exeptionnelle</span>
+                <p>{{fermetureExp}}</p>
+            </div>
+            <div class="group">
+                <img src="assets/icons/heure.png" alt="" >
+                <span>Heure d'arrivée</span>
+                <p>De {{heureArriveeDu}} à {{heureArriveeAu}} </p>
+            </div>
+            <div class="group">
+                <img src="assets/icons/heure.png" alt="" >
+                <span>Heure de départ</span>
+                <p>De {{heureDepartDu}} jusqu'à {{heureDepartAu}} </p>
+            </div>
+            <div class="group">
+                <img src="assets/icons/area.png" alt="" >
+                <span>Superficie</span>
+                <p>{{superficie}} m2</p>
+            </div>
+            <div class="group">
+                <img src="assets/icons/puzzle.png" alt="" >
+                <span>Nombre de pièces</span>
+                <p>3</p>
+            </div>
+        </div>
+    </div>
+    <!-- Start Equipements -->  
+    <div class="equi">
+        <h2 class="RobotoR">Equipements</h2>
+        <app-equipements [equipements]="habitat.equipements"></app-equipements>
+    </div>
+    
+    <!-- Start Services-->  
+    <div class="serv">
+        <h2 class="RobotoR">Services</h2>
+        <app-habitat-services [services]="habitat.services"></app-habitat-services>
+    </div>
+    <!-- Avis clients --> 
+    <div class="avis">
+        <h2 class="RobotoR">Avis Clients</h2>
+        <app-commentaires [commentaires]="commentaires"></app-commentaires>
+    </div>
+    <div class="avis">
+        <h2 class="RobotoR">Avis Clients</h2>
+        {{habitat.prix}}
+    </div>
+ </div>
+
+ 
+
+ 

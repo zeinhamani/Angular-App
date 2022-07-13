@@ -1,0 +1,119 @@
+<div class="box">
+    <div class="form" *ngIf="addForm">
+        <title class="title RobotoB"> Renseigner les informations de votre Habitat</title>
+       
+        <form [formGroup]="addForm" (ngSubmit)="editHabitat()" class="LatoB">
+            <div class="group">
+                <label for="nom" >Titre de votre habitat</label>
+                <input type="text" id="nom"  placeholder="" formControlName="titre">
+            </div>
+            <div class="group">
+                <label for="address" >Adresse de l'habitat</label>
+                <input type="text" id="adress" placeholder="" formControlName="adresse">
+            </div>
+            <div class="group">
+                <label for="prix" >Prix de l'habitat par nuit</label>
+                <input type="number" id="email" placeholder="" formControlName="prix">
+            </div>
+            <div class="group">
+                <label for="email" >Superficie de l'habitat</label>
+                <input type="number" id="Superficie" placeholder="" formControlName="superficie">
+            </div>
+            <div class="group">
+                <label for="capaciteAccueil" > capaciteAccueil</label>
+                <input type="number" id="capaciteAccueil" placeholder="" formControlName="capaciteAccueil">
+            </div>
+            <div class="group">
+                <label for="capaciteAccueil" > Date d'Ouverture a partir de</label>
+                <input type="date" id="dateOuvertureDu" placeholder="" formControlName="dateOuvertureDu">
+            </div>
+            <div class="group">
+                <label for="dateOuvertureAu" > Date d'Ouverture jusqu'a</label>
+                <input type="date" id="dateOuvertureAu" placeholder="" formControlName="dateOuvertureAu">
+            </div>
+            <div class="group">
+                <label for="capaciteAccueil" > fermeture Exptionnel</label>
+                <input type="text" id="fermetureExp" placeholder="" formControlName="fermetureExp">
+            </div>
+            <div class="group">
+                <label for=" heureArriveeDu" > Heure d'arrivée du :</label>
+                <input type="time" id=" heureArriveeDu" placeholder="" formControlName="heureArriveeDu">
+            </div>
+            <div class="group">
+                <label for=" heureArriveeAu" > Heure d'arrivée Au :</label>
+                <input type="time" id=" heureArriveeAu" placeholder="" formControlName="heureArriveeAu">
+            </div>
+            <div class="group">
+                <label for="heureDepartDu" > Heure depart du :</label>
+                <input type="time" id="heureDepartDu" placeholder="" formControlName="heureDepartDu">
+            </div>
+            <div class="group">
+                <label for=" heureDepartAu" > Heure depart Au :</label>
+                <input type="time" id=" heureDepartAu" placeholder="" formControlName="heureDepartAu">
+            </div>
+            <div class="group cat">
+                <label for="categorie" > Catégorie de l'habitat( {{habitat.categorie.nom}} )</label>
+                <select name="categorie" id="" id="categorie"  formControlName="categorie" >
+                    <option  *ngFor="let cat of categories" value="api/categories/{{cat.id}}">{{cat.nom}}</option>
+                </select>
+            </div>
+            <div class="group cat">
+                <label for="equipement" > Equipements de l'habitat</label>
+                <select name="equipement" id="equipement" multiple="multiple"   formControlName="equipements" >
+                    <option  *ngFor="let equi of  equipements" value="api/equipements/{{equi.id}}">{{equi.nom}}</option>
+                </select>
+            </div>
+            <div class="groupName" formArrayName="services">
+                <div class="title">
+                      Services de l'habitat
+                      <button type="button" class="add" (click)="addService()"> 
+                        <fa-icon class="edit" [icon]="addIcon"></fa-icon>
+                        Ajouter un service
+                    </button> 
+                </div>
+                <div class="group" *ngFor="let serv of services.controls; let i = index" >
+                    <div class="service-form" [formGroupName]="i">
+                        <div class="group">
+                          <div class="label-serv">  
+                                 <label for="nom" >Nom du service</label>
+                                 <button type="button" class="remov" (click)="removeService(i)"> 
+                                     <fa-icon class="edit" [icon]="removIcon"></fa-icon>
+                                     Supprimer
+                                </button> 
+                             </div>
+                            <input type="text" value="{{serv.value.nom}}"  placeholder="" formControlName="nom">
+                        </div>
+                        <div class="group">
+                            <label for="description" > Description </label>
+                            <input type="text" value="{{serv.value.description}}"  id="" placeholder="" formControlName="description">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="groupName" formGroupName="destination">
+                <div class="title RobotoR">
+                      Destination
+                </div>
+                <div class="group">
+                    <label for=" heureDepartAu" >Ville</label>
+                    <input type="text" id=" heureDepartAu" placeholder="" formControlName="ville">
+                </div>
+                <div class="group">
+                    <label for=" heureDepartAu" > Departement</label>
+                    <input type="number" id=" heureDepartAu" placeholder="" formControlName="departement">
+                </div>
+                <div class="group">
+                    <label for=" heureDepartAu" > Pays </label>
+                    <input type="text" id=" heureDepartAu" placeholder="" formControlName="pays">
+                </div>
+             </div>
+             <div class="group pres">
+                <label for="prenom" >Présentation de l'habitat</label>
+                <textarea name="presentation" id="" cols="30" rows="10" formControlName="presentation"></textarea>
+            </div>
+            <button class="btn" type="submit">Sauvegarder</button>
+        </form>
+
+    </div>
+</div>
+

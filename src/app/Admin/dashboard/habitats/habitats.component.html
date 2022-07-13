@@ -1,0 +1,29 @@
+<div class="en-tete">
+    <div class="titre RobotoB">
+        <h2>Listes des habitats</h2>
+    </div>
+    <div class="items LatoB">
+         <span>Nom</span>
+         <span>Id</span>
+         <span>Categorie</span>
+         <span>Propriétaire</span>
+    </div>
+</div>   
+<div class="habitat LatoB" *ngFor="let habitat of habitats">
+        <div class="nom">
+            <img src="" >
+            <span>{{habitat.titre}}</span>
+        </div>
+        <span >{{habitat.id}}</span>
+        <span >{{habitat.categorie.nom}}</span>
+        <span  >{{habitat.destination.pays}}</span>
+        <div class="icon">
+            <a>
+                <fa-icon class="edit" [icon]="edit"></fa-icon>
+            </a>
+            <a>
+                <fa-icon  class="delete" [icon]="delete"></fa-icon>
+            </a>
+
+        </div>
+</div>

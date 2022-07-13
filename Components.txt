@@ -1,0 +1,47 @@
+                 /*** AttypikHouse Composants ***/
+
+
+-Auth
+   -signUpLocataire
+   -signUpProprietaire
+   -signAdmin
+   -signIn
+
+-Header
+-footer
+-Accueil
+-Hebergements
+      -HabitatList
+      -HabitatItem
+        -Contact
+        -AddReservation
+        -Equipements
+        -Services
+        -Commentaires
+
+-Destinations
+-ContactezNous
+-QuiSommesNous
+-MentionsLegales
+-CGU
+-CGV
+
+-Locataire
+   -LocMenu
+   -MesReservations
+   -MaReservation
+   -AddCommentaire
+   
+-Proprietaire
+   -PropSidebar
+   -ReservationsList
+   -ReservationItem
+   -MesHabitats
+   -MonHabiat
+   -AddHabitat
+   -EditHabitat
+   -NotificationList
+   -NotificationItem
+-Admin
+  -Dashboard
+

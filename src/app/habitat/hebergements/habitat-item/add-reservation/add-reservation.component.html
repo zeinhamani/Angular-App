@@ -1,0 +1,14 @@
+<div class="reservation">
+    <form [formGroup]="signupForm" (ngSubmit)="reserver()" class="LatoR">
+        <div class="group">
+            <input type="date" id="dateArrivee" placeholder="Date d'arrivée" formControlName="date_arrivee">
+        </div>
+        <div class="group">
+            <input type="date" id="dateDepart" placeholder="Date de départ" formControlName="date_depart">
+        </div>
+        <div class="group">
+            <input type="number" id="personnes" placeholder="Nombre de personnes" formControlName="personnes">
+        </div>
+        <button class="btn LatoR" type="submit" >Reserver</button>
+    </form>
+</div>

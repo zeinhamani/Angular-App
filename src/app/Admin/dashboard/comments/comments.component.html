@@ -1,0 +1,21 @@
+<div class="en-tete">
+    <div class="titre RobotoB">
+        <h2>Listes des Utilisateus</h2>
+    </div>
+    <div class="items LatoB">
+         <span>Id</span>
+         <span>Reservation</span>
+         <span>Locataire</span>
+         <span>Date</span>
+    </div>
+</div>   
+<div class="Commentaire LatoB" *ngFor="let comment of comments">
+        
+        <span >{{comment.id}}</span>
+        <span >{{comment.reservation.id}}</span>
+        <div class="user">
+            <img src="" >
+            <span>{{comment.reservation.user.username}}</span>
+        </div>
+        <span  >{{comment.DateCommentaire}}</span>
+</div>

@@ -1,0 +1,62 @@
+.en-tete {
+    padding: 0 30px;
+}
+.titre {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.en-tete .items {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-column-gap: 10px;
+    border-bottom: 1px solid #000;
+    border-top: 1px solid #000 ;
+    padding: 20px 0 20px 0;
+}
+.en-tete .items span {
+    font-size: 20px;
+}
+
+.habitat{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-column-gap: 10px;
+    margin-bottom: 3px;
+    padding: 20px 30px;
+    transition: var(--main-transition);
+}
+.habitat:hover {
+    box-shadow: 0 2px 3px var(--second-one);
+    background: var(--second-one);
+}
+.habitat:hover span {
+    color: var(--main-two);
+}
+.habitat div {
+    display: flex;
+}
+.habitat div img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+.habitat .user img {
+    border-radius: 50%;
+}
+.habitat:hover .annuler {
+    color: var(--main-two);
+}
+.habitat:hover .conserver {
+    color: var(--main-one);
+}
+@media(max-width:500px){
+    .en-tete .items span {
+        font-size: 15px;
+    }   
+    .habitat span {
+        font-size: 11px;
+    }
+}

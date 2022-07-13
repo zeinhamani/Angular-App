@@ -1,0 +1,120 @@
+<div class="container">
+    <div class="form">
+        <title  class="title RobotoB"> Crée votre compte proprietaire</title>
+    
+        <form [formGroup]="signupForm" (ngSubmit)="savePropData()" class="LatoR">
+            <div class="group">
+                <label for="nom" >Votre nom</label>
+                <input type="text" 
+                       id="nom" 
+                       placeholder="Klein" 
+                       formControlName="nom" 
+                       [class.invalid]="nom!.invalid && nom!.touched">
+                <div class="invalid" [class.dNone]="nom!.valid || nom!.untouched ">
+                    <span *ngIf="nom!.hasError('required')">
+                            Votre  nom est obligatoire
+                    </span>
+                </div>
+                <span *ngIf="nom!.hasError('minLength')">
+                    Le nom doit contenir au moins 3 charachtères
+                </span>
+            </div>
+            <div class="group">
+                <label for="prenom" >Votre Prenom</label>
+                <input type="text" 
+                       id="prenom" 
+                       placeholder="Etienne" 
+                       formControlName="prenom"
+                       [class.invalid]="prenom!.invalid && prenom!.touched">
+                <div class="invalid" [class.dNone]="prenom!.valid || prenom!.untouched ">
+                    <span *ngIf="prenom!.hasError('required')">
+                            Votre  prenom est obligatoire
+                    </span>
+                    <span *ngIf="prenom!.hasError('minLength')">
+                           Le prenom doit contenir au moins 3 charachtères
+                    </span>
+                </div>
+            </div>
+            <div class="group">
+                <label for="email" >Votre adress mail</label>
+                <input type="email" 
+                       id="email" 
+                       placeholder="Klein34@gmail.com" 
+                       formControlName="email"
+                       [class.invalid]="email!.invalid && email!.touched">
+                <div class="invalid" [class.dNone]="email!.valid || email!.untouched ">
+                    <span *ngIf="email!.hasError('required')">
+                      Votre adresse email est obligatoire
+                    </span>
+                    <span *ngIf="email!.hasError('email')">
+                      Le Format de l'adresse fournie n'est pas valide
+                    </span>
+                </div>
+            </div>
+
+            <div class="group">
+                <label for="tel" >Votre numero tel </label>
+                <input type="number" 
+                       id="tel"
+                       placeholder="0739872347" 
+                       [pattern]="telPtn"
+                       formControlName="tel"
+                       [class.invalid]="tel!.invalid && tel!.touched">
+                       <div class="invalid" [class.dNone]="password!.valid || password!.untouched ">
+                        <span *ngIf="password!.hasError('required')">
+                                numero telephone  est obligatoire
+                        </span>
+                        <span *ngIf="password!.hasError('pattern')">
+                            c'est pas un numéro en france
+                        </span>
+                      </div>
+            </div>
+
+            <div class="group">
+                <label for="password" >Votre mot de passe</label>
+                <input type="password" 
+                       id="password" 
+                       placeholder="" 
+                       [pattern]="passwordPtn"
+                       formControlName="password"
+                       [class.invalid]="password!.invalid && password!.touched">
+                <div class="invalid" [class.dNone]="password!.valid || password!.untouched ">
+                    <span *ngIf="password!.hasError('required')">
+                            Votre  mot de pass est obligatoire
+                    </span>
+                    <span *ngIf="password!.hasError('passwordPtn')">
+                        le mot de pass doit contenir au moins 1 charachtère alphabétique 
+                        1 majuscule , 1 muniscule et  1 nombre
+                    </span>
+            </div>
+            </div>
+            <div class="group">
+                <label for="confirmPass" >Confirmer votre mot de passe</label>
+                <input type="password" 
+                       id="password" 
+                       placeholder="" 
+                       formControlName="confirmed_password"
+                       [class.invalid]="confirmedPassword!.invalid && confirmedPassword!.touched && signupForm!.errors?.match">
+                <div class="invalid" [class.dNone]="confirmedPassword!.valid || confirmedPassword!.untouched ">
+                    <span *ngIf="confirmedPassword!.hasError('required')">
+                            La confirmation de mot de pass est obligatoire
+                    </span>
+                    <span *ngIf="signupForm!.errors?.misMatch">
+                           les mots de passes ne sont pas le meme
+                </span>
+            </div>  
+            </div>
+            <button class="btn" type="submit">Enregistrer</button>
+            <p class="conditions"> 
+                <input type="checkbox">
+                CONDITIONS GÉNÉRALES D’UTILISATION et DE VENTE
+                <a routerLink="auth/signin">Voir</a> 
+            </p>
+            <p> Vous avez déjà un compte ?  
+                <a routerLink="auth/signin">Se connecter</a> 
+            </p>
+        </form>
+
+    </div>
+    
+</div>
