@@ -1,4 +1,3 @@
-
  <div class="container" *ngIf="habitat">
     <!-- Start détails --> 
     <div class="details">
@@ -9,7 +8,7 @@
         </div>
         <div class="prix LatoR">à partir de {{habitat.prix}} euro</div>
         <div class="img-slider" >
-            <img src="" alt="" >
+            <img [src]="serverUrl + image" alt="" >
             <button class="left" (click)="defilerGauche()">
                 <img src="assets/icons/play.png" alt=""  >
             </button>
@@ -23,13 +22,13 @@
         </div>
     </div>
     <!-- Start Réservation -->
-    <app-add-reservation></app-add-reservation>
+    <app-add-reservation [prix]="habitat.prix" [id]="habitat.id"></app-add-reservation>
     <!-- Start Prop Contact --> 
-    <app-contact></app-contact>
+    <app-contact [email]="habitat.user.email" [tel]="habitat.user.tel"></app-contact>
     <!-- Start Presentation -->
     <div class="pres">
         <h2 class="RobotoB">Présentaion de l'habitat</h2>
-        <span class="LatoB">{{adresse}}</span>
+        <span class="LatoB">{{habitat.adresse}}</span>
         <p class="LatoR">{{habitat.presentation}}</p>
     </div>
     <!-- Start Caractéristiques -->
@@ -39,27 +38,27 @@
             <div class="group">
                 <img src="assets/icons/opening.png" alt="" >
                 <span class="">Date d'ouverture</span>
-                <p>Du {{dateOuvertureDu}} au {{dateOuvertureAu}}</p>
+                <p>Du {{getDate(habitat.dateOuvertureDu)}} au {{getDate(habitat.dateOuvertureAu)}}</p>
             </div>
             <div class="group">
                 <img src="assets/icons/cancel.png" alt="" >
                 <span>Fermeture exeptionnelle</span>
-                <p>{{fermetureExp}}</p>
+                <p>{{habitat.fermetureExp}}</p>
             </div>
             <div class="group">
                 <img src="assets/icons/heure.png" alt="" >
                 <span>Heure d'arrivée</span>
-                <p>De {{heureArriveeDu}} à {{heureArriveeAu}} </p>
+                <p>De {{getTime(habitat.heureArriveeDu)}} à {{getTime(habitat.heureArriveeAu)}} </p>
             </div>
             <div class="group">
                 <img src="assets/icons/heure.png" alt="" >
                 <span>Heure de départ</span>
-                <p>De {{heureDepartDu}} jusqu'à {{heureDepartAu}} </p>
+                <p>De {{getTime(habitat.heureDepartDu)}} jusqu'à {{getTime(habitat.heureDepartAu)}} </p>
             </div>
             <div class="group">
                 <img src="assets/icons/area.png" alt="" >
                 <span>Superficie</span>
-                <p>{{superficie}} m2</p>
+                <p>{{habitat.superficie}} m2</p>
             </div>
             <div class="group">
                 <img src="assets/icons/puzzle.png" alt="" >

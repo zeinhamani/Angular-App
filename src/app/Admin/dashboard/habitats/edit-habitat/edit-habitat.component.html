@@ -1,7 +1,7 @@
 <div class="box">
     <div class="form" *ngIf="addForm">
-        <title class="title RobotoB">  Renseigner les informations d'Habitat</title>
-
+        <title class="title RobotoB"> Renseigner les informations de votre Habitat</title>
+       
         <form [formGroup]="addForm" (ngSubmit)="editHabitat()" class="LatoB">
             <div class="group">
                 <label for="nom" >Titre de votre habitat</label>
@@ -24,12 +24,12 @@
                 <input type="number" id="capaciteAccueil" placeholder="" formControlName="capaciteAccueil">
             </div>
             <div class="group">
-                <label for="capaciteAccueil" > Date d'Ouverture a partir de</label>
+                <label for="capaciteAccueil" > Date d'Ouverture a partir ({{getDate(habitat.dateOuvertureDu)}})</label>
                 <input type="date" id="dateOuvertureDu" placeholder="" formControlName="dateOuvertureDu">
             </div>
             <div class="group">
-                <label for="dateOuvertureAu" > Date d'Ouverture jusqu'a</label>
-                <input type="date" id="dateOuvertureAu" placeholder="" formControlName="dateOuvertureAu">
+                <label for="dateOuvertureAu" > Date d'Ouverture jusqu'a ({{getDate(habitat.dateOuvertureAu)}})</label>
+                <input type="date" id="dateOuvertureAu" placeholder="01/09/2022" formControlName="dateOuvertureAu">
             </div>
             <div class="group">
                 <label for="capaciteAccueil" > fermeture Exptionnel</label>
@@ -53,15 +53,27 @@
             </div>
             <div class="group cat">
                 <label for="categorie" > Catégorie de l'habitat( {{habitat.categorie.nom}} )</label>
-                <select name="categorie" id="" id="categorie"  formControlName="categorie" >
-                    <option  *ngFor="let cat of categories" value="api/categories/{{cat.id}}">{{cat.nom}}</option>
-                </select>
+                <ng-multiselect-dropdown
+                [placeholder]="'Categorie'"
+                [settings]="dropdownSettings1"
+                [data]="dropdownList1"
+                formControlName="categorie" 
+                [(ngModel)]="selectedItems1"
+               (onSelect)="onItemSelect($event)"
+               (onSelectAll)="onSelectAll($event)">
+             </ng-multiselect-dropdown>
             </div>
             <div class="group cat">
                 <label for="equipement" > Equipements de l'habitat</label>
-                <select name="equipement" id="equipement" multiple="multiple"   formControlName="equipements" >
-                    <option  *ngFor="let equi of  equipements" value="api/equipements/{{equi.id}}">{{equi.nom}}</option>
-                </select>
+                <ng-multiselect-dropdown
+                          [placeholder]="'Equipement'"
+                          [settings]="dropdownSettings2"
+                          [data]="dropdownList2"
+                          formControlName="equipements" 
+                          [(ngModel)]="selectedItems2"
+                         (onSelect)="onItemSelect($event)"
+                         (onSelectAll)="onSelectAll($event)">
+                </ng-multiselect-dropdown>
             </div>
             <div class="groupName" formArrayName="services">
                 <div class="title">
@@ -111,6 +123,21 @@
                 <label for="prenom" >Présentation de l'habitat</label>
                 <textarea name="presentation" id="" cols="30" rows="10" formControlName="presentation"></textarea>
             </div>
+            <div class="group media file">
+                <input type="file"  id="file" accept="image/*" (change)="handleMediaInput($event)" >
+                <label for="file" >
+                    <fa-icon [icon]=" imageIcon"></fa-icon>
+                    Choisir une Image
+                </label>
+            </div>
+           
+            <div class="images" >    
+                    <img *ngFor="let media of habitat.medias" (click)="menuToggle()" [class.border]="toggler"  [src]="serverUrl + media.url" alt="">
+            </div>
+            <div class="sup LatoR"  [class.active]="toggler">
+                    supprimer 
+            </div>
+            
             <button class="btn" type="submit">Sauvegarder</button>
         </form>
 

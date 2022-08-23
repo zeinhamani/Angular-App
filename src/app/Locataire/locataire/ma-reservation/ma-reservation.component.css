@@ -1,5 +1,6 @@
 .box {
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 .reservation {
@@ -7,6 +8,7 @@
    flex-direction: column;
    background: rgba(0, 0, 0, 0.7);
    width: 70%;
+   margin-bottom: 20px;
 }
 .img {
     width: 100%;
@@ -85,4 +87,34 @@
     color: var(--second-two);
     background-color: var(--main-two);
     border-radius: 4px;
+}
+
+
+.commentaire {
+    display: none;
+    padding: 10px 10px;
+    width: 60%;
+    background: linear-gradient(135deg, var(--main-one), #284C96);
+    border-radius: 10px;
+}
+h3 {
+    margin-bottom: 20px;
+}
+
+.commentaire .group input {
+    width: 100%;
+    height: 300px;
+    border: none;
+    border-radius: 15px;
+    background: var(--second-two);
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+.commentaire form button {
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.active {
+    display: block;
 }

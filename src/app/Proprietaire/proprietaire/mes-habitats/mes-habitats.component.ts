@@ -6,6 +6,8 @@ import { ProprietaireComponent } from './../proprietaire.component';
 import { HabitatsService } from 'src/app/services/habitats.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-mes-habitats',
@@ -17,9 +19,13 @@ export class MesHabitatsComponent implements OnInit {
   addIcon = faPlus
   edit = faEdit
   delete = faTrash
+  serverUrl = environment.SERVER_URL
   habitats: Habitat[] = []
+  totalLength!: number;
+  p: number = 1;
   constructor(private habitatService: HabitatsService, 
     private router : Router,
+    private toastr: ToastrService,
     private  proprietaire: ProprietaireComponent ) { }
 
   ngOnInit(): void {
@@ -31,6 +37,7 @@ export class MesHabitatsComponent implements OnInit {
       this.habitatService.getHabitatItem(habitat.id).subscribe(
              (response) => {
               this.habitats.push(response)
+              this.totalLength = response["hydra:totalItems"]
             }
       )
     }
@@ -42,7 +49,11 @@ export class MesHabitatsComponent implements OnInit {
   addHabitat() {
     this.router.navigate(['proprietaire/add'])
   }
-  editHabitat(id: number) {
-    this.router.navigate(['proprietaire/mes-habitats', id ])
+ 
+  supprimer(id:number){
+    this.habitatService.deleteHabitat(id).subscribe(
+      (res) => this.toastr.success('cette habitat est supprimer!', 'Bien supprimmer!'),
+      (err) => this.toastr.error('essayer plus tard',"suppression, échouée")
+    )
   }
 }

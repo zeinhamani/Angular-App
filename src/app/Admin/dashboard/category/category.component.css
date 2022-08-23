@@ -60,6 +60,7 @@
 .habitat:hover a .delete {
     color: var(--main-two);
 }
+
 @media(max-width:500px){
     .en-tete .items span {
         font-size: 15px;

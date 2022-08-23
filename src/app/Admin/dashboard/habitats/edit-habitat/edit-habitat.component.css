@@ -35,8 +35,8 @@
     font-size: 17px;
     margin-bottom: 5px;
 }
-.form .group input {
-    height: 45px;
+.form .group input,.form .group textarea {
+    
     width: 100%;
     outline: none;
     border-radius: 5px;
@@ -46,8 +46,14 @@
     font-size: 15px;
     transition: var(--main-transition);
 }
-.form .group input:focus {
-    border-color: var(--main-one);
+.form .group textarea {
+    height: 100px;
+}
+.form .group input {
+    height: 45px;
+}
+.form .file {
+    grid-column: 1/ 3;
 }
 .form .cat {
     grid-column: 1/ 3;

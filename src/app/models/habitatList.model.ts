@@ -6,6 +6,8 @@ export class HabitatList {
         public prix: number,
         public categorie: {id: number, nom: string},
         public destination: Destination,
+        public user: {id:number,nom:string},
+        public medias: [{url:string}]
         ){
 
 }

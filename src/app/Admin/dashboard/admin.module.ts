@@ -30,46 +30,64 @@ import { EditServiceComponent } from './list-services/edit-service/edit-service.
 import { AddServiceComponent } from './list-services/add-service/add-service.component';
 import { AddEquipementComponent } from './list-equipements/add-equipement/add-equipement.component';
 import { EditEquipementComponent } from './list-equipements/edit-equipement/edit-equipement.component';
+import { MediasComponent } from './medias/medias.component';
+import { AddMediaComponent } from './medias/add-media/add-media.component';
+import { EditMediaComponent } from './medias/edit-media/edit-media.component';
+import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
+import {NgxPaginationModule} from 'ngx-pagination';
 
 const adminRoutes: Routes = [
   {
-    path: 'admin', 
+    path: 'Admin', 
     component: DashboardComponent,
     canActivate: [AuthGuard,RolePermissionGuard],
     data: {
       role: 'ROLE_ADMIN'
     },
     children: [
-
-        {path: 'habitats',component: HabitatsComponent},
-        {path: 'habitats/:id',component: EditHabitatComponent},
-        {path:'add', component: AddHabitatComponent},
+        
+      {path: 'habitats',component: HabitatsComponent},
+      {path:'habitats/add', component: AddHabitatComponent},
+      {path: 'habitats/:id',component: EditHabitatComponent},
+      
 
         {path: 'users', component: UsersComponent},
-        {path:'users/:id', component: EditUserComponent},
         {path:'users/add', component: AddUserComponent},
+        {path:'users/:id', component: EditUserComponent},
+        
+        
 
         {path: 'categories', component: CategoryComponent},
-        {path: 'categories/:id', component: EditCategoryComponent},
         {path:'categories/add', component: AddCategoryComponent},
+        {path: 'categories/:id', component: EditCategoryComponent},
+       
 
         {path: 'destinations',component: ListDestinationsComponent},
-        {path: 'destinations/:id',component: EditDestinationComponent},
         {path:'destinations/add', component: AddDestinationComponent},
+        {path: 'destinations/:id',component: EditDestinationComponent},
+        
          
         {path: 'reservations',component: ReservationsComponent},
-        {path: 'reservations/:id',component: EditReservationComponent},
         {path: 'reservations/add', component: AddReservationComponent},
+        {path: 'reservations/:id',component: EditReservationComponent},
+        
          
         {path: 'commentaires', component: CommentsComponent},
 
         {path: 'equipements',component: ListEquipementsComponent},
-        {path: 'equipements/:id',component: EditEquipementComponent},
         {path: 'equipements/add', component: AddEquipementComponent},
+        {path: 'equipements/:id',component: EditEquipementComponent},
          
         {path: 'services', component: ListServicesComponent},
-        {path: 'services/:id', component: EditServiceComponent},
         {path:'services/add', component: AddServiceComponent},
+        {path: 'services/:id', component: EditServiceComponent},
+        
+
+        {path: 'medias', component: MediasComponent},
+        {path:'medias/add', component: AddMediaComponent},
+        {path: 'medias/:id', component: EditMediaComponent},
+        
+        
         
         {path: 'notifier', component: NotifierComponent},
         {path: 'mail', component: BoxMailComponent}
@@ -106,12 +124,17 @@ const adminRoutes: Routes = [
     AddServiceComponent,
     AddEquipementComponent,
     EditEquipementComponent,
+    MediasComponent,
+    AddMediaComponent,
+    EditMediaComponent,
   ],
   imports: [
     CommonModule,
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
+    NgMultiSelectDropDownModule.forRoot(),
     RouterModule.forChild(adminRoutes)
   ]
 })

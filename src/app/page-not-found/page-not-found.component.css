@@ -1,0 +1,17 @@
+.box {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    height: 500px;
+    color: var(--main-two);
+    padding: 10px;
+    background: var(--second-one);
+}
+.box .hab {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10;
+}
+.box fa-icon {
+    font-size: 100px;
+}

@@ -11,10 +11,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
+
 const routes : Routes = [
-  {path: 'signupLocataire', component: SignUpLocataireComponent},
-  {path: 'signupProprietaire', component: SignUpProprietaireComponent },
-  {path: 'signin', component: SignInComponent}
+  {path: 'auth/signupLocataire', component: SignUpLocataireComponent},
+  {path: 'auth/signupProprietaire', component: SignUpProprietaireComponent },
+  {path: 'auth/signin', component: SignInComponent}
 ]
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ const routes : Routes = [
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forChild(routes)],
+    RouterModule.forChild(routes)
+  ],
   exports: [RouterModule],
   providers: [
     {

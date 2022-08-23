@@ -1,13 +1,16 @@
-<div class="container" *ngIf="habitats">
-    <div class="habitat"  *ngFor="let habitat of habitats" (click)="voirHabitat(habitat.id)" >
+<div class="container" >
+    <div class="habitats-container">
+        <div class="habitat"  
+         *ngFor="let habitat of habitats  | paginate: { itemsPerPage: 5, currentPage: p, totalItems:totalLength }" 
+         (click)="voirHabitat(habitat.id)" >
          <div class="type LatoB">
              <h2>{{habitat.categorie.nom}}</h2>
          </div>
          <div class="img">
-             <img src="" >
+             <img [src]="serverUrl + habitat.medias[0].url" >
              <div class="prix LatoB">{{habitat.prix}}€ / nuit </div>
          </div>
-         <div class="info ">
+         <div class="info">
              <span class="nom LatoB">
                  {{habitat.titre}}
              </span>
@@ -15,5 +18,12 @@
                 <p>{{habitat.destination.pays}}, {{habitat.destination.ville}}({{habitat.destination.departement}}) </p> 
              </div>
          </div>
-    </div> 
+       </div>  
+
+    </div>
+    <div class="pagination-container">
+        <pagination-controls (pageChange)="p = $event" [maxSize]="8" class="my-pagination LatoB"></pagination-controls>
+    </div>    
+     
 </div>
+  

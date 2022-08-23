@@ -10,12 +10,11 @@ export class ContactComponent implements OnInit {
   @Input()
   email!: string;
   @Input()
-  tel!: string;
+  tel!: number;
   constructor() { }
 
   ngOnInit(): void {
-    this.email = 'zeinhamani@gmail.com';
-    this.tel = '0646823979';
+    
   }
 
 }

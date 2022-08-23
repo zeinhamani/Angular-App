@@ -1,1 +1,112 @@
-<p>add-user works!</p>
+<div class="container">
+    <div class="form">
+        <title  class="title RobotoB"> Crée votre compte proprietaire</title>
+    
+        <form [formGroup]="signupForm" (ngSubmit)="saveUserData()" class="LatoR">
+            <div class="group">
+                <label for="nom" >Votre nom</label>
+                <input type="text" 
+                       id="nom" 
+                       placeholder="Klein" 
+                       formControlName="nom" 
+                       [class.invalid]="nom!.invalid && nom!.touched">
+                <div class="invalid" [class.dNone]="nom!.valid || nom!.untouched ">
+                    <span *ngIf="nom!.hasError('required')">
+                            Votre  nom est obligatoire
+                    </span>
+                </div>
+                <span *ngIf="nom!.hasError('minLength')">
+                    Le nom doit contenir au moins 3 charachtères
+                </span>
+            </div>
+            <div class="group">
+                <label for="email" >Votre adress mail</label>
+                <input type="email" 
+                       id="email" 
+                       placeholder="Klein34@gmail.com" 
+                       formControlName="email"
+                       [class.invalid]="email!.invalid && email!.touched">
+                <div class="invalid" [class.dNone]="email!.valid || email!.untouched ">
+                    <span *ngIf="email!.hasError('required')">
+                      Votre adresse email est obligatoire
+                    </span>
+                    <span *ngIf="email!.hasError('email')">
+                      Le Format de l'adresse fournie n'est pas valide
+                    </span>
+                </div>
+            </div>
+
+            <div class="group">
+                <label for="tel" >Votre numero tel </label>
+                <input type="number" 
+                       id="tel"
+                       placeholder="0739872347" 
+                       [pattern]="telPtn"
+                       formControlName="tel"
+                       [class.invalid]="tel!.invalid && tel!.touched">
+                       <div class="invalid" [class.dNone]="tel!.valid || tel!.untouched ">
+                        <span *ngIf="tel!.hasError('required')">
+                                numero telephone  est obligatoire
+                        </span>
+                        <span *ngIf="tel!.hasError('pattern')">
+                            ce n'est pas un numéro en france
+                        </span>
+                      </div>
+            </div>
+
+            <div formGroupName="passwords">
+                <div class="group required">
+                    <label for="password" >Votre mot de passe</label>
+                    <input type="text" 
+                           id="password" 
+                           placeholder=""
+                           [pattern]="passwordPtn" 
+                           formControlName="password"
+                           [class.invalid]="password!.invalid && password!.touched">
+                    <div class="invalid" [class.dNone]="password!.valid || password!.untouched ">
+                            <span *ngIf="password!.hasError('required')">
+                                    Votre  nom est obligatoire
+                            </span>
+                            <span *ngIf="password!.hasError('pattern')">
+                                le mot de pass doit contenir au moins 1 charachtère alphabétique 
+                                1 majuscule , 1 muniscule et  1 nombre
+                            </span>
+                    </div>
+                </div>
+                <div class="group required">
+                    <label for="confirmPass" >Confirmer votre mot de passe</label>
+                    <input type="text" 
+                           id="password" 
+                           placeholder="" 
+                           formControlName="confirmed_password"
+                           [class.invalid]="confirmedPassword!.invalid && confirmedPassword!.touched">
+                    <div class="invalid" [class.dNone]="confirmedPassword!.valid || confirmedPassword!.untouched ">
+                            <span *ngIf="confirmedPassword!.hasError('required')">
+                                    La confirmation de mot de pass est obligatoire
+                            </span>
+                            <span *ngIf="confirmedPassword!.hasError('Mismatch')">
+                                les mots de pass ne sont pas le meme
+                             </span>
+                    </div>       
+                </div>
+                
+            </div>
+            <div class="group required">
+                    <label for="confirmPass" >Role d'utilisateur</label>
+                    <ng-multiselect-dropdown
+                    [placeholder]="'Roles'"
+                    [settings]="dropdownSettings"
+                    [data]="dropdownList"
+                    formControlName="role" 
+                    [(ngModel)]="selectedItems"
+                   (onSelect)="onItemSelect($event)"
+                   (onSelectAll)="onSelectAll($event)">
+                 </ng-multiselect-dropdown>
+            </div>
+            <button class="btn" type="submit" [disabled]="!signupForm.valid">Enregistrer</button>
+            
+        </form>
+
+    </div>
+    
+</div>

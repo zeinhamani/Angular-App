@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  SERVER_URL:'http://localhost:8000',
   AUTH_URL: 'http://localhost:8000/api/login',
   USERS_URL: 'http://localhost:8000/api/users',
   HABITATS_URL: 'http://localhost:8000/api/habitats',
@@ -13,7 +14,8 @@ export const environment = {
   COMENTAIRES_URL: 'http://localhost:8000/api/commentaires',
   SERVICES_URL: 'http://localhost:8000/api/services',
   EQUIPEMENTS_URL: 'http://localhost:8000/api/equipements',
-  MEDIAS_URL: 'http://localhost:8000/api/medias'
+  MEDIAS_URL: 'http://localhost:8000/api/media',
+  NOTIF_URL: 'http://localhost:8000/api/notifications'
 
 
 };

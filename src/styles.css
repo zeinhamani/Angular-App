@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import '~ngx-toastr/toastr';
+
 /* Variables */
 :root {
     --main-one: #289672;
@@ -151,4 +153,58 @@ body {
 
 .dNone {
     display: none;
+}
+
+
+#toast-container > div {
+    opacity: 1;
+}
+/** Icons **/
+
+
+
+/** Pangiantion **/
+
+.pagination-container {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+.my-pagination ::ng-deep .ngx-pagination .current {
+    background: var(--main-two);
+    color: var(--second-one);
+}
+.my-pagination ::ng-deep .ngx-pagination {
+    padding: 8px;
+    border-radius: 2px;
+    background: var(--second-two);
+}
+.back {
+    background-color:#E3DDDD;
+}
+
+
+/**** Input File **/
+input[type="file"] {
+    display: none;
+}
+.file label {
+    color: var(--second-one);
+    height: 60px;
+    width: 250px;
+    background-color: var(--main-one);
+    transition: var(--main-transition);
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family:  RobotoB;
+}
+.file label:hover{
+    color: var(--main-one);
+    background-color: var(--second-one);
+}
+.file label fa-icon {
+    font-size: 30px;
+    margin-right: 5px;
 }

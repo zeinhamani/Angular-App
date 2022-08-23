@@ -1,1 +1,36 @@
-<p>notifier works!</p>
+<div class="box">
+    <div class="form">
+        <div class="title RobotoB">
+            Envoyer une Notification a un utilisateurs
+        </div>
+        <form [formGroup]="notifForm" (ngSubmit)="creerNotif()" class="LatoB">
+            <div class="group">
+                <label for="categorie" > Choisir l'utilisateur</label>
+                <ng-multiselect-dropdown
+                    [placeholder]="'Users'"
+                    [settings]="dropdownSettings"
+                    [data]="dropdownList"
+                    formControlName="role" 
+                    [(ngModel)]="selectedItems"
+                   (onSelect)="onItemSelect($event)"
+                   (onSelectAll)="onSelectAll($event)">
+                </ng-multiselect-dropdown>
+            </div>
+            <div class="group">
+                <label for="nom" >le contenu :</label>
+                <textarea name="" id="" cols="30" rows="10" formControlName="content"></textarea>
+                <div class="invalid" [class.dNone]="content!.valid || content!.untouched ">
+                    <span *ngIf="content!.hasError('required')">
+                            Votre nom est obligatoire
+                    </span>
+                 
+                </div>
+            </div>
+            
+            
+            
+            <button class="btn" type="submit">Envoyer</button>
+        </form>
+
+    </div>
+</div>

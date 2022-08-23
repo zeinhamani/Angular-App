@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 import { Habitat } from 'src/app/models/habitat.model.ts';
 import { faUsers } from '@fortawesome/free-solid-svg-icons';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-habitat-item',
@@ -18,28 +19,11 @@ export class HabitatItemComponent implements OnInit {
   habitat!: Habitat  ;
   faUsers = faUsers;
   commentaires: Commentaire[]=[]
+  serverUrl = environment.SERVER_URL
   image!: string  ;
   images: string[]=[];
   counter: number = 0;
-  titre!: string
-  presentation!: string
-  adresse!: string
-  prix!: number  
-  superficie!: number
-  capaciteAccueil!: number
-  dateOuvertureDu!: string
-  dateOuvertureAu!: string
-  fermetureExp!: string
-  heureArriveeDu!: string
-  heureArriveeAu!: string 
-  heureDepartDu!: string
-  heureDepartAu!: string 
-  categorieNom!: string
-  ville!: string
-  departement!: string
-  pays!: string
-  services!: any[]
-  equipements!: any[]
+  d!: string
   constructor(private habitatService: HabitatsService, private commService: CommentairesService, private activeRoute: ActivatedRoute) { }
   
   ngOnInit(): void {
@@ -48,47 +32,15 @@ export class HabitatItemComponent implements OnInit {
       this.habitatService.getHabitatItem(+habitatId).subscribe(
           (response) => {
             this.habitat = response
-            this.titre = response["titre"]
-            this.presentation = response["presentation"]
-            this.adresse = response["adresse"]
-            this.prix = response["prix"]
-            this.superficie = response["superficie"]
-            this.capaciteAccueil = response["capaciteAccueil"]
-            this.dateOuvertureDu = response["dateOuvertureDu"]
-            this.dateOuvertureAu = response["dateOuvertureAu"]
-            this.fermetureExp = response["fermetureExp"]
-            this.heureArriveeDu = response["heureArriveeDu"]
-            this.heureArriveeAu = response["heureArriveeAu"]
-            this.heureDepartDu = response["heureDepartDu"]
-            this.heureDepartAu = response["heureDepartAu"]
-           this.categorieNom = response["categorie"].nom
-            this.ville = response["destination"].ville
-            this.departement = response["destination"].departement
-            this.pays = response["destination"].pays
-            this.services = response["services"]
-            this.equipements = response["equipements"]
-             /*this.habitat.titre = response["titre"]
-            this.habitat.adresse = response["adresse"]
-            this.habitat.prix = response["prix"]
-            this.habitat.superficie = response["superficie"]
-            this.habitat.capaciteAccueil = response["capaciteAccueil"]
-            this.habitat.dateOuvertureDu = response["dateOuvertureDu"]
-            this.habitat.dateOuvertureAu = response["dateOuvertureAu"]
-            this.habitat.fermetureExp = response["fermetureExp"]
-            this.habitat.heureArriveeDu = response["heureArriveeDu"]
-            this.habitat.heureArriveeAu = response["heureArriveeAu"]
-            this.habitat.heureDepartDu = response["heureDepartDu"]
-            this.habitat.heureDepartAu = response["heureDepartAu"]
-           this.habitat.categorie.nom = response["categorie"].nom
-            this.habitat.destination.ville = response["destination"].ville
-            this.habitat.destination.departement = response["destination"].departement
-            this.habitat.destination.pays = response["destination"].pays*/
+            this.recuperImages();
+            this.d = this.habitat.dateOuvertureAu
+            console.log(this.getDate(this.d))
+            console.log(this.getTime(this.habitat.heureArriveeAu))
+            this.image = this.habitat.medias[0].url 
           }
       )
     }
-   /*  this.recupereCommentaires()
-    this.recuperImages();
-    this.image = this.habitat!.medias[0].fichier */
+  
   }  
 
   /** recuperer les commentaires de l'habitat *
@@ -100,9 +52,19 @@ export class HabitatItemComponent implements OnInit {
         } 
   }
   /** recuperer les images de l'habitat */
+  getDate(d:string) {
+      const dateTime = new Date(d)
+      const date = dateTime.getFullYear()+'/'+(dateTime.getMonth()+1)+'/'+dateTime.getDate();
+      return date;
+  }
+  getTime(d:string){
+    const dateTime = new Date(d)
+    const time = dateTime.getHours()+':'+dateTime.getMinutes()
+    return time
+  }
   recuperImages(){
     for(let i=0; i < this.habitat.medias.length; i++){
-      this.images.push(this.habitat.medias[i].fichier)
+      this.images.push(this.habitat.medias[i].url)
   }
   }
   defilerGauche(){
@@ -111,11 +73,11 @@ export class HabitatItemComponent implements OnInit {
         this.counter = 0
     } 
     this.image = this.images[this.counter]; 
-    
+      
   }
   defilerDroit() {
     this.counter--;
-    if(this.counter === -1 ) {
+    if(this.counter === -1 ) {  
       this.counter = this.images.length - 1;
     } 
   this.image = this.images[this.counter];

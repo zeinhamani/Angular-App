@@ -18,6 +18,20 @@
                 </div>
             </div>
 
+            <div class="group file">
+                <input type="file"  id="file" (change)="handleMediaInput($event)" >
+                <label for="file" >
+                    <fa-icon  [icon]="imageIcon"></fa-icon>
+                    Choisir une Image
+                </label>
+            </div>
+            <div class="img" (click)="menuToggle()" >
+                <img [class.border]="toggler" [src]="serverUrl + categorie.media.url" alt="" srcset="">
+                <div class="sup LatoR"  [class.active]="toggler">
+                    supprimer 
+                </div>
+            </div>
+
             <button class="btn" type="submit">Enregistrer</button>
         </form>
 

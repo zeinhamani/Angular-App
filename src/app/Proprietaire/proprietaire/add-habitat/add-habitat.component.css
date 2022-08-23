@@ -35,8 +35,8 @@
     font-size: 17px;
     margin-bottom: 5px;
 }
-.form .group input {
-    height: 45px;
+.form .group input,.form .group textarea {
+    
     width: 100%;
     outline: none;
     border-radius: 5px;
@@ -46,14 +46,33 @@
     font-size: 15px;
     transition: var(--main-transition);
 }
-.form .group input:focus {
-    border-color: var(--main-one);
+.form .group textarea {
+    height: 100px;
+}
+.form .group input {
+    height: 45px;
+}
+.form .file {
+    grid-column: 1/ 3;
 }
 .form .cat {
     grid-column: 1/ 3;
 }
 .form .pres {
     grid-column: 1/ 3;
+}
+.form .media {
+    grid-column: 1 / 3;
+}
+.form .images {
+    grid-column: 1 / 3;
+    display: flex;
+    width: 40px;
+    height: 40px;
+}
+.form .images img {
+    width: 100%;
+    height: 100%;
 }
 .form .groupName {
     grid-column: 1/ 3;

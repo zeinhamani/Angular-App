@@ -1,0 +1,113 @@
+<div class="box">
+        <div class="photo LatoB">
+            <img [src]="userImage" alt="user-image" srcset="">
+            <div class="file required">
+                <input type="file"  id="file" accept="image/*" (change)="handleMediaInput($event)" >
+                <label for="file" (click)="Toggle()">
+                    {{ user.media != null ? 'Changer votre photo':'Choisir une photo de profile' }}
+                </label>
+            </div>
+            <button class="btn" [class.active]="toggler" (click)="upload()">Enregistrer photo</button> 
+        </div>
+            
+        
+        <form [formGroup]="userForm" (ngSubmit)="saveUserData()" class="LatoR">
+            <div class="nom LatoB">
+                <span>
+                    Nom: {{user.nom}}
+                    <fa-icon class="edit" (click)="Toggle1()" [icon]="edit"></fa-icon>
+                </span>
+              
+                <div class="group name required" [class.active]="toggler1">
+              
+                    <label for="nom" > Nouveau nom</label>
+                    <input type="text" 
+                           id="nom" 
+                           placeholder="{{user.nom}}" 
+                           formControlName="nom"
+                           [class.invalid]="nom!.invalid && nom!.touched">
+                    <div class="invalid" [class.dNone]="nom!.valid || nom!.untouched ">
+                        <span *ngIf="nom!.hasError('required')">
+                                Votre  nom est obligatoire
+                        </span>
+                        <span *ngIf="nom!.hasError('minLength')">
+                               Le nom doit contenir au moins 3 charachtères
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tel LatoB">
+                <span>
+                    numero telephone: {{user.tel}}
+                    <fa-icon class="edit" (click)="Toggle3()"  [icon]="edit"></fa-icon>
+                </span>
+                
+                <div class="group"  [class.active]="toggler3">
+                    <label for="tel" >Votre numero tel </label>
+                    <input type="number" 
+                           id="tel"
+                           placeholder="0739872347" 
+                           [pattern]="telPtn"
+                           formControlName="tel"
+                           [class.invalid]="tel!.invalid && tel!.touched">
+                           <div class="invalid" [class.dNone]="tel!.valid || tel!.untouched ">
+                            <span *ngIf="tel!.hasError('required')">
+                                    numero telephone  est obligatoire
+                            </span>
+                            <span *ngIf="tel!.hasError('pattern')">
+                                ce n'est pas un numéro en france
+                            </span>
+                          </div>
+                </div>
+            </div>
+            <div class="pass LatoB">
+                <span>changer votre mot de pass</span>
+                
+                <fa-icon class="edit" (click)="Toggle2()"  [icon]="edit"></fa-icon>
+                <div formGroupName="passwords" >
+                    <div class="group required" [class.active]="toggler2">
+                        <label for="password" >Votre mot de passe</label>
+                        <input type="text" 
+                               id="password" 
+                               placeholder=""
+                               [pattern]="passwordPtn" 
+                               formControlName="password"
+                               [class.invalid]="password!.invalid && password!.touched">
+                        <div class="invalid" [class.dNone]="password!.valid || password!.untouched ">
+                                <span *ngIf="password!.hasError('required')">
+                                        Votre  nom est obligatoire
+                                </span>
+                                <span *ngIf="password!.hasError('pattern')">
+                                    le mot de pass doit contenir au moins 1 charachtère alphabétique 
+                                    1 majuscule , 1 muniscule et  1 nombre
+                                </span>
+                        </div>
+                    </div>
+                    <div class="group required" [class.active]="toggler2">
+                        <label for="confirmPass" >Confirmer votre mot de passe</label>
+                        <input type="text" 
+                               id="password" 
+                               placeholder="" 
+                               formControlName="confirmed_password"
+                               [class.invalid]="confirmedPassword!.invalid && confirmedPassword!.touched">
+                        <div class="invalid" [class.dNone]="confirmedPassword!.valid || confirmedPassword!.untouched ">
+                                <span *ngIf="confirmedPassword!.hasError('required')">
+                                        La confirmation de mot de pass est obligatoire
+                                </span>
+                                <span *ngIf="confirmedPassword!.hasError('Mismatch')">
+                                    les mots de pass ne sont pas le meme
+                                 </span>
+                        </div>       
+                    </div>
+                </div>
+            </div>
+         
+            <button class="btn" [class.active]=" toggler1 || toggler2 ||toggler3" type="submit" >Enregistrer</button>
+
+        
+
+    </form>    
+            
+    
+</div>

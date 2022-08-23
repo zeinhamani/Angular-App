@@ -3,15 +3,15 @@
         <h1 class="RobotoB">Nom habitats </h1>
     </div>
     <div class="categories">
-        <div class="categorie LatoR" *ngFor="let categorie of categories">
+        <div class="categorie LatoR"  *ngFor="let categorie of categories">
             <div class="img">
-                <img src="" alt="">
+                <img [src]="serverUrl + categorie.media.url" alt="">
             </div>
             <div class="nom">
                 <span class="nom">{{categorie.nom}}</span>
             </div>
             <div class="lien">
-                <a (click)="voir()">Voir les habitats</a>
+                <a routerLink="{{categorie.id}}">Voir les habitats</a>
             </div>
             
         </div>

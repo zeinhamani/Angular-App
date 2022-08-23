@@ -19,12 +19,12 @@ export class Habitat {
                 public heureArriveeAu: string,
                 public heureDepartDu: string,
                 public heureDepartAu: string,
-                public categorie: Categorie,
-                public user: User,
-                public destination: Destination,
-                public services: ServiceHabitat[]=[],
-                public equipements: Equipement[]=[],
-                public medias: Media[],
+                public categorie: {id:number , nom:string},
+                public user: {email:string,tel:number},
+                public destination: {ville:string, departement:number,pays:string},
+                public services: [{nom:string,description:string}],
+                public equipements =[],
+                public medias: [{url: string}],
                 ){
 
     }

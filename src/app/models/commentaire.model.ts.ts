@@ -6,7 +6,18 @@ export class Commentaire {
         public Contenu: string,
         public DateCommentaire: string,
         public Evaluation: number, 
-        public reservation: Reservation,
+        public reservation:  {
+            id: number,
+            user: {
+                id: number,
+                media: {
+                    url: string
+                }
+            },
+            habitat: {
+                id:number
+            }
+        },
         ) {
 
     }

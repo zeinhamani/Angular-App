@@ -56,11 +56,11 @@
     text-align: end;
     
 }
-.details a {
+.details button {
     color: var(--second-one);
     transition: var(--main-transition);
 }
-.details a:hover {
+.details button:hover {
     color: var(--main-two);
 }
 

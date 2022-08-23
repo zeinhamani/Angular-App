@@ -8,6 +8,7 @@ import { AuthService } from './../../Auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HabitatsService } from 'src/app/services/habitats.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-locataire',
@@ -20,6 +21,8 @@ export class LocataireComponent implements OnInit {
   resrvIcon  = faSuitcaseRolling
   settIcon = faWrench
   logOut =  faSignOutAlt
+  serverUrl = environment.SERVER_URL
+  userImage = 'assets/user.png'
   currentUser!: User
   id!: number
   constructor(private authService: AuthService ,
@@ -33,11 +36,12 @@ export class LocataireComponent implements OnInit {
       (response) => {
          const users =  response["hydra:member"]
          for(const key of Object.keys( users) ){
-          console.log(`${key} => ${users[key].username}`)
-          if(users[key].username === this.authService.getTokenData().username){
+          console.log(`${key} => ${users[key].email}`)
+          if(users[key].email === this.authService.getTokenData().username){
             this.userService.getUserItem(users[key].id).subscribe(
                (res) => {
                  this.currentUser = res 
+                 this.userImage = this.serverUrl + this.currentUser.media.url
                }
             )
           }

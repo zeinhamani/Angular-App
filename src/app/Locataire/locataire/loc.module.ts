@@ -9,6 +9,7 @@ import { MaReservationComponent } from './ma-reservation/ma-reservation.componen
 import { AddCommentaireComponent } from './add-commentaire/add-commentaire.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SettingComponent } from './setting/setting.component';
 
 
 const locRoutes: Routes =[
@@ -25,7 +26,7 @@ const locRoutes: Routes =[
       component: MaReservationComponent,
       children: [{path: 'commenter', component: AddCommentaireComponent}]
       },
-     
+      {path: 'setting', component: SettingComponent} 
    ]
   },
 ]
@@ -35,6 +36,7 @@ const locRoutes: Routes =[
     MesReservationsComponent,
     MaReservationComponent,
     AddCommentaireComponent,
+    SettingComponent,
   ],
   imports: [
     CommonModule,

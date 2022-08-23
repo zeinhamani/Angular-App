@@ -1,40 +1,40 @@
 <div class="container">  
     <div class="sidebar">
            <div class="img">
-               <img src="" alt="" srcset="">
+               <img [src]="currentUser != null ? serverUrl + currentUser.media.url:userImage"alt="" srcset="">
            </div>
            <h2 class="RobotoR">{{currentUser.nom}}</h2>
            <ul class="menu LatoB" >
                    <li>
-                       <a routerLink='mes-habitats'>
+                       <a routerLink='mes-habitats' class="link">
                            <fa-icon [icon]="habitIcon"></fa-icon>
                            <span>Mes habitats</span>
                        </a>
                    </li>
                    <li>
-                   <a routerLink=''>
+                   <a routerLink='reservations' class="link">
                         <fa-icon [icon]="resrvIcon"></fa-icon>
                         <span>Reservations</span>
                    </a>
                    </li>
                    <li>
-                    <a routerLink=''>
+                    <a routerLink='mes-notifications' class="link">
                          <fa-icon [icon]="NotIcon"></fa-icon>
                          <span>Notifications</span>
                     </a>
                     </li>
 
                    <li>
-                       <a routerLink='habitats'>
+                       <a routerLink='setting' class="link">
                            <fa-icon [icon]="settIcon"></fa-icon>
                            <span>Settings</span>
                        </a>
                    </li>
                    <li>
-                       <a routerLink='habitats'>
+                       <div (click)="deconnecter()"  class="link">
                            <fa-icon [icon]="logOut"></fa-icon>
                            <span>Deconnecter</span>
-                       </a>
+                       </div>
                    </li>
                </ul>
     </div>

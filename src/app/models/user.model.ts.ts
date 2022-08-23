@@ -9,9 +9,11 @@ export class User {
         public password: string,
         public roles: string, 
         public nom: string ,
+        public tel: number,
         public reservations: [{id: number}],
         public habitats: [{id: number}],
-        public media: Media = new Media(0,''),
+        public notifications: [{content:string}],
+        public media: Media
         ) {
 
     }

@@ -40,10 +40,10 @@
 .sidebar .menu li:hover {
     background: var(--second-two);
 }
-.sidebar .menu a {
+.sidebar .menu .link {
     display: flex;
 }
-.sidebar .menu a fa-icon {
+.sidebar .menu .link  fa-icon {
   margin-right: 20px;
   font-size: 18px;
   color: var(--second-two);
@@ -52,7 +52,7 @@
 .sidebar .menu li:hover fa-icon {
    color: var(--main-two);
 }
-.sidebar .menu a  span {
+.sidebar .menu .link   span {
     font-size: 18px;
     color: var(--second-two);
     transition: var(--main-transition);

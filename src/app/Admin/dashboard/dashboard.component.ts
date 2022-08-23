@@ -1,3 +1,4 @@
+import { CurrentUser } from './../../shared/current-user';
 import { Component, OnInit } from '@angular/core';
 import { faClipboardList } from '@fortawesome/free-solid-svg-icons';
 import { faCampground } from '@fortawesome/free-solid-svg-icons';
@@ -40,9 +41,12 @@ export class DashboardComponent implements OnInit {
   logOut =  faSignOutAlt
   toggler = false
   currentUser!: User
-  constructor(private authService: AuthService , private userService:UsersService) { }
+  constructor(private authService: AuthService , private userService:UsersService,private user: CurrentUser) { }
 
   ngOnInit(): void {
+    this.getCurrentUser()
+    //this.user.getCurrentUser(this.currentUser )
+    
   }
   getCurrentUser() { 
     this.userService.getUserList().subscribe(
@@ -54,6 +58,7 @@ export class DashboardComponent implements OnInit {
             this.userService.getUserItem(users[key].id).subscribe(
                (res) => {
                  this.currentUser = res 
+                 console.log(this.currentUser.id)
                }
             )
           }

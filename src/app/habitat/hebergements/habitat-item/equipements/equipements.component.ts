@@ -1,5 +1,6 @@
 import { Equipement } from './../../../../models/equipement.model.ts';
 import { Component, Input, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-equipements',
@@ -9,7 +10,9 @@ import { Component, Input, OnInit } from '@angular/core';
 export class EquipementsComponent implements OnInit {
 
   @Input()
-  equipements!: any[];
+  equipements!: Equipement[];
+
+  serverUrl = environment.SERVER_URL
   constructor() { }
 
   ngOnInit(): void {

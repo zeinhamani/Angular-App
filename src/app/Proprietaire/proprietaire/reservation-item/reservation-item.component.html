@@ -1,1 +1,40 @@
-<p>reservation-item works!</p>
+<div class="box">
+    <div class="reservation">
+        <div class="img">
+            <img [src]="serverUrl + reservation.habitat.medias[0].url" >
+            <div class="annuler LatoB" *ngIf="reservation.Annulee"> Vous avez  annulée cette reservation </div>
+        </div>
+        <div class="dateR LatoR">
+                  le {{reservation.DateReservation}}
+        </div>
+        <div class="montant">
+            <span class="LatoB">{{reservation.MontantTotal}}€</span>
+            <p class="personnes LatoR">{{reservation.NombrePersonnes}} personnes</p>
+        </div>
+        <div class="dates">
+            <div class="heure">
+                <fa-icon [icon]="arrivee"></fa-icon>
+                <div class="text">
+                    <span class="LatoB">Arrivée</span>
+                    <p class="LatoR">{{reservation.DateArrivee}}</p>
+                </div>
+            </div>
+            <div class="heure">
+              <fa-icon [icon]="depart"></fa-icon>
+              <div class="text">
+                  <span class="LatoB">Depart</span>
+                  <p class="LatoR">{{reservation.DateDepart}}</p>
+              </div>
+            </div>
+        </div>
+       
+  </div>
+  <div class="annuler">
+     <button class="btn" (click)="anullerReserv()">annuler cette reservation</button>
+  </div>
+</div> 
+
+
+
+
+

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { UsersService } from './../../services/users.service';
 import { AuthService } from '../auth.service';
 import { Component, OnInit } from '@angular/core';
+import jwtDecode from 'jwt-decode';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
@@ -17,6 +18,9 @@ export class SignInComponent implements OnInit {
   errorMessage!: string;
   faTimes = faTimes;
   signupForm!: FormGroup
+  token!: {exp:number,iat:number,username:string,roles:string[]}
+  role!: string
+  loginStatus = false
   constructor(private formBuilder: FormBuilder, 
                private authService: AuthService,
                private userService: UsersService,
@@ -39,8 +43,24 @@ export class SignInComponent implements OnInit {
     
     this.authService.login(this.signupForm.value).subscribe(
       resultat => {
+          this.loginStatus = true
+          this.token = jwtDecode(resultat.token)
+          this.role = this.token.roles[0]
+          switch (this.role) {
+            case 'ROLE_ADMIN':
+              this.router.navigateByUrl('/Admin');
+              break;
+            case 'ROLE_PROP':
+              this.router.navigateByUrl('/proprietaire');
+              break;
+            case 'ROLE_LOC':
+              this.router.navigateByUrl('/Locataire');
+              break;
+            default:
+              console.log(`Sorry, we are out of ${this.role}.`);
+          }
         this.errorMessage = '';
-        this.router.navigateByUrl('/habitats');
+        
       },
       error => {
      

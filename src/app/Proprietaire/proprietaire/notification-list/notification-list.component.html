@@ -1,1 +1,7 @@
-<p>notification-list works!</p>
+<div class="box" *ngIf="notifications">
+    <title>Mes notifications</title>
+    <div class="notif RobotoB" *ngFor="let notif of notifications">
+        <p>{{notif.content}}</p>
+    
+    </div>
+</div>

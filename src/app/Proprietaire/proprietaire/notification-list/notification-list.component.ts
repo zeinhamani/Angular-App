@@ -1,3 +1,4 @@
+import { ProprietaireComponent } from './../proprietaire.component';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./notification-list.component.css']
 })
 export class NotificationListComponent implements OnInit {
-
-  constructor() { }
+  notifications!: [{content: string}]
+  constructor(private prop: ProprietaireComponent ) { }
 
   ngOnInit(): void {
+    this.notifications = this.prop.currentUser.notifications
   }
 
 }

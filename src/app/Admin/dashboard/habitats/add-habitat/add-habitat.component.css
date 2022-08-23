@@ -13,7 +13,7 @@
     border-radius: 5px 5px 0 0;
 
 }
-.form .title {
+.form .title { 
     font-size: 25px;
     margin-bottom: 20px;
     color: #2b2a2a;
@@ -35,8 +35,8 @@
     font-size: 17px;
     margin-bottom: 5px;
 }
-.form .group input {
-    height: 45px;
+.form .group input,.form .group textarea {
+    
     width: 100%;
     outline: none;
     border-radius: 5px;
@@ -46,7 +46,16 @@
     font-size: 15px;
     transition: var(--main-transition);
 }
-.form .group input:focus {
+.form .group textarea {
+    height: 100px;
+}
+.form .group input {
+    height: 45px;
+}
+.form .file {
+    grid-column: 1/ 3;
+}
+.form .group input:focus , .form .group textarea:focus{
     border-color: var(--main-one);
 }
 .form .cat {
@@ -58,6 +67,7 @@
 .form .groupName {
     grid-column: 1/ 3;
 }
+
 .add {
     color: var(--main-color);
     border: none;

@@ -1,0 +1,30 @@
+<div class="en-tete">
+    <div class="titre RobotoB">
+        <h2>Listes des Medias</h2>
+        <button class="add LatoB" (click)="addMedia()">
+            <fa-icon class="edit" [icon]="addIcon"></fa-icon>
+            Ajouter une image
+        </button>
+    </div>
+    <div class="items LatoB">
+         <span>Photo</span>
+    </div>
+</div>   
+<div class="media LatoB" *ngFor="let media of medias | paginate: { itemsPerPage: 5, currentPage: p, totalItems:totalLength }">
+        <div class="nom">
+            <img [src]="serverUrl + media.url" >
+        </div> 
+        <div class="icon">
+            <a>
+                <fa-icon class="edit" [icon]="edit"></fa-icon>
+            </a>
+            <a>
+                <fa-icon  class="delete" [icon]="delete"></fa-icon>
+            </a>
+
+        </div>
+        
+</div>
+<div class="pagination-container">
+    <pagination-controls (pageChange)="p = $event" [maxSize]="8" class="my-pagination LatoB"></pagination-controls>
+</div>   

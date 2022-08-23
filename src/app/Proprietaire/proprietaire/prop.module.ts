@@ -13,6 +13,9 @@ import { RolePermissionGuard } from 'src/app/role-permission.guard';
 import { RouterModule, Routes } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
+import { SettingComponent } from './setting/setting.component';
 
 const propRoutes: Routes =[
   {
@@ -29,7 +32,8 @@ const propRoutes: Routes =[
      {path: 'reservations', component: ReservationsListComponent},
      {path: 'reservations/:id', component: ReservationItemComponent},
      {path: 'mes-notifications', component: NotificationListComponent},
-     {path: 'mes-notifications/:id', component: NotificationItemComponent}
+     {path: 'mes-notifications/:id', component: NotificationItemComponent},
+     {path: 'setting', component: SettingComponent}
 
      
      
@@ -47,12 +51,15 @@ const propRoutes: Routes =[
     EditHabitatComponent,
     NotificationListComponent,
     NotificationItemComponent,
+    SettingComponent,
   ],
   imports: [
     CommonModule,
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
+    NgMultiSelectDropDownModule.forRoot(),
     RouterModule.forChild(propRoutes)
   ]
 })

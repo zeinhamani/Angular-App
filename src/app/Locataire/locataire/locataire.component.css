@@ -63,7 +63,7 @@
 }
 .outlet {
     grid-column: 2 / 6;
-    padding-top: 30px 10px 0 0;
+    padding: 10px 10px 0 10px;
     background: linear-gradient(135deg, var(--main-one), #284C96);
 }
 

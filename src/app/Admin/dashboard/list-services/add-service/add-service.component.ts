@@ -1,6 +1,8 @@
+import { Router } from '@angular/router';
 import { HabitatServicesService } from 'src/app/services/habitat-services.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-service',
@@ -9,7 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AddServiceComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private servService: HabitatServicesService){}
+  constructor(private formBuilder: FormBuilder, private servService: HabitatServicesService,private toastr: ToastrService, private router: Router){}
   addForm!: FormGroup
   ngOnInit(): void {
     this.initForm();
@@ -31,7 +33,11 @@ export class AddServiceComponent implements OnInit {
   
   creerService(){
       this.servService.addServ(this.addForm.value).subscribe(
-        (response) =>  console.log(response)
+        (res) => {
+          this.toastr.success('', 'Service bien créer!')
+          this.router.navigate(['Admin/services'])
+         } ,
+        (err) => this.toastr.error('essayer plus tard',"Création échouée")
       )
     } 
 

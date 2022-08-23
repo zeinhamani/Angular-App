@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
 import { Habitat } from 'src/app/models/habitat.model.ts';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { environment } from 'src/environments/environment';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-habitats',
@@ -14,12 +17,17 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 })
 export class HabitatsComponent implements OnInit {
 
+ 
+  addIcon = faPlus
   edit = faEdit
   delete = faTrash
   habitats!: HabitatList[] 
   habitatId: number = 11
+  serverUrl = environment.SERVER_URL
+  totalLength!: number;
+  p: number = 1;
  
-  constructor(private habitatService: HabitatsService, private router: Router) { }
+  constructor(private habitatService: HabitatsService, private router: Router,private toastr: ToastrService) { }
 
   ngOnInit(): void {
     //this.habitats = this.habitatService.habitats
@@ -28,15 +36,19 @@ export class HabitatsComponent implements OnInit {
   }
   getHabitats(){
     this.habitatService.getHabitatList().subscribe(
-      (response) => this.habitats = response["hydra:member"]
+      (response) => {
+        this.habitats = response["hydra:member"]
+        this.totalLength = response["hydra:totalItems"]
+      }
     )
   }
-  creer(){
+  addHabitat(){
+    this.router.navigate(['Admin/habitats/add'])
   }
-  modifier() {
-    
-  }
-  supprimer(){
-   
+  supprimer(id:number){
+    this.habitatService.deleteHabitat(id).subscribe(
+      (res) => this.toastr.success('cette habitat est supprimer!', 'Bien supprimmer!'),
+      (err) => this.toastr.error('essayer plus tard',"suppression, échouée")
+    )
   }
 }

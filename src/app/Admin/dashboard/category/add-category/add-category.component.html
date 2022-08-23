@@ -3,7 +3,7 @@
         <div class="title RobotoB">
             Renseigner les informations du nouveau Categorie
         </div>
-        <form [formGroup]="addForm" (ngSubmit)="creerCategory()" class="LatoB">
+        <form [formGroup]="addForm" (ngSubmit)="creer()" class="LatoB">
             <div class="group">
                 <label for="nom" >le nom du Category</label>
                 <input type="text"  id="nom" placeholder="" formControlName="nom">
@@ -16,7 +16,15 @@
                     </span>
                 </div>
             </div>
-
+            <div class="group file">
+                <input type="file"  id="file" accept="image/*" (change)="handleMediaInput($event)" >
+                <label for="file" >
+                    <fa-icon [icon]=" imageIcon"></fa-icon>
+                    Choisir une Image
+                </label>
+            </div>
+            
+            
             <button class="btn" type="submit">Enregistrer</button>
         </form>
 

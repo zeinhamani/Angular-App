@@ -1,8 +1,51 @@
-<div class="container">
+<div class="container" >
     <form [formGroup]="signupForm" (ngSubmit)="rechercher()" class="LatoR">
         <div class="group">
             <input type="search" id="rechercher" placeholder="Rechercher" formControlName="mot_cle">
         </div>
-        <button class="btn LatoR" type="submit" >Reserver</button>
+        <button class="btn LatoR" type="submit" >Rechercher</button>
     </form>
+    <div class="habitat"  *ngFor="let habitat of habitats" (click)="voirHabitat(habitat.id)" >
+        <div class="type LatoB">
+            <h2>{{habitat.categorie.nom}}</h2>
+        </div>
+        <div class="img">
+            <img  [src]="serverUrl + habitat.medias[0].url" >
+            <div class="prix LatoB">{{habitat.prix}}€ / nuit </div>
+        </div>
+        <div class="info ">
+            <span class="nom LatoB">
+                {{habitat.titre}}
+            </span>
+            <div class="destination LatoL">
+               <p>{{habitat.destination.pays}}, {{habitat.destination.ville}}({{habitat.destination.departement}}) </p> 
+            </div>
+        </div>
+   </div> 
+   <div class="home RobotoB">
+    <div class="img">
+        <img src="assets/Attypik.jpg" alt="AttypikHouse">
+    </div>
+    <div class="attyp RobotoB">
+        <h2>ATTYPIKHOUSE</h2>
+        <p>AttypikHouse cherche à offrir une expérience unique et originale
+            avec la nature, car elle agit comme un médiateur efficace entre 
+            le client et le propriétaire, et met sa platforme à disposition pour vous
+            faciliter la recherche d'un habitat insolite.
+            Entrez maintenant et cherchez un habitat beau et confortable pour passez
+            vos vacances 
+        </p>
+    </div>
+    <div class="part">
+        <h2>NOS PARTENAIRES</h2>
+        <div class="imgs">
+            <img src="assets/p1.gif" alt="">
+            <img src="assets/p2.gif" alt="">
+            <img src="assets/p3.gif" alt="">
+            <img src="assets/p4.png" alt="">
+            <img src="assets/p5.jpg" alt="">
+        </div>
+       
+    </div>
+   </div>
 </div>

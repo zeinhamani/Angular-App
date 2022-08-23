@@ -1,15 +1,10 @@
 <div class="commentaires">
     <div class="commentaire LatoR" *ngFor="let commentaire of commentaires">
-          <img src="" alt="" >
-          <span>{{commentaire.reservation.user.username}}</span>
+          <img [src]="serverUrl + commentaire.reservation.user.media.url" alt="" >
           <div class="stars" >
-            <fa-icon [icon]="faStar"></fa-icon>
-            <fa-icon [icon]="faStar"></fa-icon>
-            <fa-icon [icon]="faStar"></fa-icon>
-            <fa-icon [icon]="faStar"></fa-icon>
-            <fa-icon [icon]="faStar"></fa-icon>
+            <fa-icon *ngFor="let ev of numTable(commentaire.Evaluation)" [icon]="faStar"></fa-icon>
           </div>
-          <p class="date"> Le {{commentaire.DateCommentaire}}</p>
+          <p class="date"> Le {{getDate(commentaire.DateCommentaire)}} à {{getTime(commentaire.DateCommentaire)}}</p>
           <p class="contenu">{{commentaire.Contenu}}</p>
     </div>
 </div>

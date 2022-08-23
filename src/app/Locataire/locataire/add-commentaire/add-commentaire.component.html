@@ -3,10 +3,16 @@
         <h2 class="title RobotoB">
             Laisser un commentaire
         </h2>
-        <form [formGroup]="signupForm" (ngSubmit)="publier()" class="LatoR">
+        <form [formGroup]="commentaireForm" (ngSubmit)="publier()" class="LatoR">
             <div class="group LatoB">
                 <label for="nom">Message</label>
                 <input type="text" id="comment"  formControlName="comment">
+            </div>
+            <div class="group LatoB">
+                <label for="nom">Message</label>
+                <select name="evaluation" id="evaluation" multiple="multiple"   formControlName="evaluation" >
+                    <option  *ngFor="let num of numbers" value="">{{num}}</option>
+                </select>
             </div>
             <button class="btn LatoR" type="submit" >Publier</button>
         </form>

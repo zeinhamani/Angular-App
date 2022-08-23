@@ -53,15 +53,28 @@
             </div>
             <div class="group cat">
                 <label for="categorie" > Catégorie de l'habitat</label>
-                <select name="categorie" id="" id="categorie"  formControlName="categorie" >
-                    <option  *ngFor="let cat of categories" value="api/categories/{{cat.id}}">{{cat.nom}}</option>
-                </select>
+                <ng-multiselect-dropdown
+                          [placeholder]="'Categorie'"
+                          [settings]="dropdownSettings1"
+                          [data]="dropdownList1"
+                          formControlName="categorie" 
+                          [(ngModel)]="selectedItems1"
+                         (onSelect)="onItemSelect($event)"
+                         (onSelectAll)="onSelectAll($event)">
+                </ng-multiselect-dropdown>
+            
             </div>
             <div class="group cat">
                 <label for="equipement" > Equipements de l'habitat</label>
-                <select name="equipement" id="equipement" multiple="multiple"   formControlName="equipements" >
-                    <option  *ngFor="let equi of  equipements" value="api/equipements/{{equi.id}}">{{equi.nom}}</option>
-                </select>
+                <ng-multiselect-dropdown
+                          [placeholder]="'Equipement'"
+                          [settings]="dropdownSettings2"
+                          [data]="dropdownList2"
+                          formControlName="equipement" 
+                          [(ngModel)]="selectedItems2"
+                         (onSelect)="onItemSelect($event)"
+                         (onSelectAll)="onSelectAll($event)">
+                </ng-multiselect-dropdown>
             </div>
             <div class="groupName" formArrayName="services">
                 <div class="title">
@@ -110,6 +123,16 @@
              <div class="group pres">
                 <label for="prenom" >Présentation de l'habitat</label>
                 <textarea name="presentation" id="" cols="30" rows="10" formControlName="presentation"></textarea>
+            </div>
+            <div class="group media file">
+                <input type="file"  id="file" accept="image/*" (change)="handleMediaInput($event)" >
+                <label for="file" >
+                    <fa-icon [icon]=" imageIcon"></fa-icon>
+                    Choisir une Image
+                </label>
+            </div>
+            <div class="images" *ngIf="urls">
+                <img *ngfor="let url of urls" [src]="url" alt="">
             </div>
             <button class="btn" type="submit">Enregistrer</button>
         </form>

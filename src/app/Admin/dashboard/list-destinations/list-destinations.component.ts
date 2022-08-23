@@ -27,5 +27,6 @@ export class ListDestinationsComponent implements OnInit {
       (response) => this.destinations= response["hydra:member"]
     )
   }
+  addDestination() {}
 
 }

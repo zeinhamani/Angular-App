@@ -1,1 +1,91 @@
-<p>contactez-nous works!</p>
+<div class="box">
+    <div class="form">
+        <div class="title RobotoB">
+            <h1>CONTACTEZ NOUS</h1>
+            <p>Notre équipe est à votre écoute pour vous aider à trouver l'habitat
+                que vous voulez ou à mettre vos propriétés sur notre platform 
+            qu'il vous faut, du lundi au vendredi de 9h à 18h,heure en France
+        métropolitaine            </p>
+            
+        </div>
+        <div class="contact">
+            <div class="tel">
+                <img src="assets/icons/tel.png" alt="" srcset="">
+                <span>+33 06 45 28 79 89</span>
+            </div>
+            <div class="mail">
+                <img src="assets/icons/email.png" alt="" srcset="">
+                <span>NOUS-ECRIRE</span>
+            </div>
+            <form [formGroup]="contactForm" (ngSubmit)="Envoyer()" class="LatoB">
+                <div class="group">
+                    <label for="nom" >nom</label>
+                    <input type="text" 
+                           id="nom" 
+                           placeholder="Klein" 
+                           formControlName="nom" 
+                           [class.invalid]="nom!.invalid && nom!.touched">
+                    <div class="invalid" [class.dNone]="nom!.valid || nom!.untouched ">
+                        <span *ngIf="nom!.hasError('required')">
+                                Votre  nom est obligatoire
+                        </span>
+                    </div>
+                    <span *ngIf="nom!.hasError('minLength')">
+                        Le nom doit contenir au moins 3 charachtères
+                    </span>
+                </div>
+            
+                <div class="group">
+                    <label for="email" >Email</label>
+                    <input type="email" 
+                           id="email" 
+                           placeholder="Klein34@gmail.com" 
+                           formControlName="email"
+                           [class.invalid]="email!.invalid && email!.touched">
+                    <div class="invalid" [class.dNone]="email!.valid || email!.untouched ">
+                        <span *ngIf="email!.hasError('required')">
+                          Votre adresse email est obligatoire
+                        </span>
+                        <span *ngIf="email!.hasError('email')">
+                          Le Format de l'adresse fournie n'est pas valide
+                        </span>
+                    </div>
+                </div>
+                <div class="group">
+                    <label for="nom" >Objet</label>
+                    <input type="text" 
+                           id="nom" 
+                           placeholder="Klein" 
+                           formControlName="objet" 
+                           [class.invalid]="objet!.invalid && objet!.touched">
+                    <div class="invalid" [class.dNone]="objet!.valid || objet!.untouched ">
+                        <span *ngIf="objet!.hasError('required')">
+                                Votre  objet est obligatoire
+                        </span>
+                    </div>
+                    <span *ngIf="objet!.hasError('minLength')">
+                        L'objet doit contenir au moins 3 charachtères
+                    </span>
+                </div>
+            
+          
+                <div class="group">
+                    <label for="nom" >Votre message</label>
+                    <textarea name="" id="" cols="30" rows="10" formControlName="message"></textarea>
+                    <div class="invalid" [class.dNone]="message!.valid || message!.untouched ">
+                        <span *ngIf="message!.hasError('required')">
+                                Votre message est obligatoire
+                        </span>
+                     
+                    </div>
+                </div>
+                
+                
+                
+                <button class="btn" type="submit">Envoyer</button>
+            </form>
+        </div>
+        
+
+    </div>
+</div>

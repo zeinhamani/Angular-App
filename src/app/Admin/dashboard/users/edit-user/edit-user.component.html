@@ -1,1 +1,57 @@
-<p>edit-user works!</p>
+<div class="container">
+    <div class="form">
+        <title  class="title RobotoB"> Crée votre compte proprietaire</title>
+    
+        <form [formGroup]="signupForm" (ngSubmit)="editUserData()" class="LatoR">
+            <div class="group">
+                <label for="nom" >Votre nom</label>
+                <input type="text" 
+                       id="nom" 
+                       placeholder="Klein" 
+                       formControlName="nom" 
+                       [class.invalid]="nom!.invalid && nom!.touched">
+                <div class="invalid" [class.dNone]="nom!.valid || nom!.untouched ">
+                    <span *ngIf="nom!.hasError('required')">
+                            Votre  nom est obligatoire
+                    </span>
+                </div>
+                <span *ngIf="nom!.hasError('minLength')">
+                    Le nom doit contenir au moins 3 charachtères
+                </span>
+            </div>
+            <div class="group">
+                <label for="tel" >Votre numero tel </label>
+                <input type="number" 
+                       id="tel"
+                       placeholder="0739872347" 
+                       [pattern]="telPtn"
+                       formControlName="tel"
+                       [class.invalid]="tel!.invalid && tel!.touched">
+                       <div class="invalid" [class.dNone]="tel!.valid || tel!.untouched ">
+                        <span *ngIf="tel!.hasError('required')">
+                                numero telephone  est obligatoire
+                        </span>
+                        <span *ngIf="tel!.hasError('pattern')">
+                            ce n'est pas un numéro en france
+                        </span>
+                      </div>
+            </div>
+            <div class="group required">
+                    <label for="role" >Role d'utilisateur</label>
+                    <ng-multiselect-dropdown
+                    [placeholder]="'Roles'"
+                    [settings]="dropdownSettings"
+                    [data]="dropdownList"
+                    formControlName="role" 
+                    [(ngModel)]="selectedItems"
+                   (onSelect)="onItemSelect($event)"
+                   (onSelectAll)="onSelectAll($event)">
+                 </ng-multiselect-dropdown>
+            </div>
+            <button class="btn" type="submit" [disabled]="!signupForm.valid">Enregistrer</button>
+            
+        </form>
+
+    </div>
+    
+</div>

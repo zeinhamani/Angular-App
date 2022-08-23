@@ -5,16 +5,19 @@
     <a href="" class="logo" [class.hidden]="toggler"> <img src="assets/AttypikLogoH.png" alt="" width="100"> </a>
 
     <ul class="nav RobotoR"  [class.hidden]="!toggler" >
-            <li><a routerLink="hebergements">Hébergements</a></li>
+            <li><a routerLink="habitats">Hébergements</a></li>
             <li><a >Destinations</a></li>
-            <li><a routerLink='auth/signupProprietaire' *ngIf="loginStatus">Username</a></li>
+            <li><a routerLink='auth/signupProprietaire' *ngIf="loginStatus">{{username}}</a></li>
             <li><a routerLink= 'auth/signupLocataire' *ngIf="!loginStatus">Espace Locataire</a></li>
             <li><a routerLink='auth/signupProprietaire' *ngIf="!loginStatus">Espace propriétaire</a></li>
     </ul>
     
     <a href="#" class="inscrire btn"  [class.hidden]="toggler" routerLink="auth/signin" *ngIf="!loginStatus">Connexion</a>
-    <a href="#" class="inscrire btn"  [class.hidden]="toggler" *ngIf="loginStatus" (click)="deconnecter()">Deconnexion</a>
-
+    <div class="img" *ngIf="loginStatus" [class.hidden]="toggler">
+        <img [src]="userImage" alt="" srcset="">
+    </div>
+   
+    
    
 </div>
 

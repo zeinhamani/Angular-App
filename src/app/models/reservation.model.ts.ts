@@ -12,7 +12,7 @@ export class Reservation {
         public DateReservation: string,
         public Annulee : boolean,
         public user : {id: number},
-        public habitat: {id: number,titre: string, medias: Media},
+        public habitat: {id: number,titre: string, medias: [{url: string}]},
         ) {
 
     }

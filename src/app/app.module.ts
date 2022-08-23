@@ -21,30 +21,28 @@ import { HabitatServicesService } from './services/habitat-services.service';
 import { HabitatsService } from './services/habitats.service';
 import { MediasService } from './services/medias.service';
 import { ReservationsService } from './services/reservations.service';
-import { ClientComponent } from './client/client.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HeaderComponent } from './client/header/header.component';
 import { FooterComponent } from './client/footer/footer.component';
-import { AccueilComponent } from './client/accueil/accueil.component';
 import { DestinationsComponent } from './destinations/destinations.component';
-import { ContactezNousComponent } from './client/contactez-nous/contactez-nous.component';
 import { MentionsLegalesComponent } from './client/mentions-legales/mentions-legales.component';
 import { QuiSommesNousComponent } from './client/qui-sommes-nous/qui-sommes-nous.component';
 import { CGUComponent } from './client/cgu/cgu.component';
 import { CGVComponent } from './client/cgv/cgv.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { ToastrModule } from 'ngx-toastr';
+import { CurrentUser } from './shared/current-user';
+
+
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ClientComponent,
-    PageNotFoundComponent,
     HeaderComponent,
     FooterComponent,
-    AccueilComponent,
     DestinationsComponent,
-    ContactezNousComponent,
     QuiSommesNousComponent,
     MentionsLegalesComponent,
     CGUComponent,
@@ -62,6 +60,11 @@ import { CGVComponent } from './client/cgv/cgv.component';
     PropModule,
     AdminModule,
     AppRoutingModule,
+    NgxPaginationModule,
+    BrowserAnimationsModule,// required animations module
+    ToastrModule.forRoot({
+      timeOut: 5000
+    }), // ToastrModule added
     
   ],
   providers: [
@@ -74,6 +77,8 @@ import { CGVComponent } from './client/cgv/cgv.component';
     HabitatsService,
     MediasService,
     ReservationsService,
+   
+    
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AttypikInterceptor,

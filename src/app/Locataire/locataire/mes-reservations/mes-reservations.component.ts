@@ -4,6 +4,7 @@ import { User } from '../../../models/user.model.ts';
 import { ReservationsService } from '../../../services/reservations.service';
 import { Reservation } from '../../../models/reservation.model.ts';
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-mes-reservations',
@@ -12,7 +13,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MesReservationsComponent implements OnInit {
 
-
+  serverUrl = environment.SERVER_URL
   reservations: Reservation[] = []
   constructor(private reservationService: ReservationsService, 
               private router : Router,

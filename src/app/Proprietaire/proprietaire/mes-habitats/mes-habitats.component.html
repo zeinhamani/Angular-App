@@ -7,9 +7,9 @@
         </button>
     </div>
     
-    <div class="habitat" *ngFor="let habitat of habitats">
+    <div class="habitat" *ngFor="let habitat of habitats | paginate: { itemsPerPage: 5, currentPage: p, totalItems:totalLength }">
         <div class="img">
-            <img src="" >
+            <img [src]="serverUrl + habitat.medias[0].url"  alt="">
             <div class="info LatoB">
                 <h3>{{habitat.titre}}</h3>
                 <span class="LatoR ">{{habitat.adresse}}</span>
@@ -20,17 +20,21 @@
             </div>
         </div>
         <div class="icon">
-            <a (click)="editHabitat(habitat.id)">
+            <a routerLink='{{habitat.id}}'>
                 <fa-icon class="edit" [icon]="edit"></fa-icon>
             </a>
             <a>
-                <fa-icon  class="delete" [icon]="delete"></fa-icon>
+                <fa-icon  class="delete" [icon]="delete" (click)="supprimer(habitat.id)"></fa-icon>
             </a>
+
         </div>
        
         <div class="details"> 
-            <a href="#" class="LatoB" (click)=" voirHabitat(habitat.id)">voir les détails </a>
+            <a href="#" class="LatoB" routerLink="/habitats/{{habitat.id}}">voir les détails </a>
         </div>
         
     </div>
+</div> 
+<div class="pagination-container">
+    <pagination-controls (pageChange)="p = $event" [maxSize]="8" class="my-pagination LatoB"></pagination-controls>
 </div> 

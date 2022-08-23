@@ -76,6 +76,15 @@ export class HabitatsService {
       },
       catchError( (error) => this.handleError(error, undefined))
      ));
+   }
+   searchByTitle(titre: string):Observable<any>{
+    return this.http.get<any>(`${this.HABITAT_URL}?titre=${titre}`).pipe(
+      tap( (habitatList) => {
+        console.table(habitatList)
+      },
+      catchError(  (error ) => this.handleError(error, [])
+
+    )));
    } 
 
    private log(response: any) {
@@ -85,5 +94,5 @@ export class HabitatsService {
      console.error(error)
      return of(errorValue)
    }
-
+   
 }
